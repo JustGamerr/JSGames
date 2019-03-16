@@ -3,4 +3,5 @@ var circle = function(x, y, size) {
 };
 
 circle(100, 50, 50);
+
 circle(300, 250, 250);
