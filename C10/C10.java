@@ -1,5 +1,8 @@
 /*
+ Evan Halliday
+ Programming 2
  March 29th, 2019
+ Period 5
  Classwork #10
 */
 
@@ -348,7 +351,8 @@ public class C10 implements ActionListener
 
 	public void displayScore(int score)
 	{
-		showScoreLabel.setText("Score: " + score + "/3");
+		double percentage = (score / 3) * 100;
+		showScoreLabel.setText("Score: " + score + "/3" + " : ");
 		showScoreLabel.setVisible(true);
 		restartQuizButton.setVisible(true);
 		closeQuizButton.setVisible(true);
