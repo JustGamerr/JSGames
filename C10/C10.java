@@ -211,7 +211,6 @@ public class C10 implements ActionListener
 		showScoreLabel.setSize(400, 30);
 		showScoreLabel.setLocation(simpleQuizFrame.getWidth() / 2 - 150, simpleQuizFrame.getHeight() / 2 - 100);
 		showScoreLabel.setFont(new Font("Arial", Font.BOLD, 30));
-		showScoreLabel.setText("Score: ");
 		showScoreLabel.setBackground(Color.WHITE);
 		showScoreLabel.setForeground(Color.RED);
 		showScoreLabel.setVisible(false);
@@ -274,7 +273,7 @@ public class C10 implements ActionListener
 	public void restartQuiz()
 	{
 		simpleQuizFrame.dispose();
-		new SimpleQuiz();
+		new C10();
 	}
 
 	public void showQOne()
@@ -351,16 +350,18 @@ public class C10 implements ActionListener
 
 	public void displayScore(int score)
 	{
-		if(score < 3) 
-		{
-			double percentage = ((double)score / 3) * 1000;
-			double scorePercentage = ((double)Math.round(percentage)) / 10;
-		}
-		else
-		{
-		}
+		double scorePercentage = 0;
+		double tempPercent = 0;
+		
+		tempPercent = ((double)score / 3) * 1000;
+		scorePercentage = ((double)Math.round(tempPercent)) / 10;
 		System.out.println(scorePercentage);
+		
 		showScoreLabel.setText("Score: " + score + "/3" + " : " + scorePercentage + "%");
+		
+		if (score == 3)
+			showScoreLabel.setForeground(Color.GREEN);
+		
 		showScoreLabel.setVisible(true);
 		restartQuizButton.setVisible(true);
 		closeQuizButton.setVisible(true);
