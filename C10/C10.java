@@ -307,7 +307,7 @@ public class C10 implements ActionListener
 		currentQuestion = 2;
 		qTextLabel.setVisible(true);
 		qTextLabel.setSize(450, 50);
-		qTextLabel.setLocation(simpleQuizFrame.getWidth() / 2 - 225, simpleQuizFrame.getHeight() / 2 - 185);
+		qTextLabel.setLocation(simpleQuizFrame.getWidth() / 2 - 218, simpleQuizFrame.getHeight() / 2 - 185);
 		qTextLabel.setText("#2: How far is the Earth away from the sun (miles)?");
 		qTwoOptOne.setVisible(true);
 		qTwoOptTwo.setVisible(true);
