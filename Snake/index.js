@@ -9,7 +9,7 @@ let crashed;
 let paused;
 
 var setup = function() {
-  createCanvas(750, 750);
+  createCanvas(500, 500);
   background(0);
   newDir = "right";
   timer = millis();
