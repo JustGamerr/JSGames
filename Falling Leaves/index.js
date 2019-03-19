@@ -3,10 +3,13 @@ var bottom=500;
 var maxSpeed = 10;
 var pileUp=.1;
 var intensity=2;
-var treeImg = loadImage("tree.jpg")
+var treeImg;
 var leafSize = 25;
-noStroke();
+
 var setup = function(){
+  createCanvas(500, 500);
+  noStroke();
+  treeImg = loadImage("tree.jpg")
   leaves=[];
   while(leaves.length<1000){
 
