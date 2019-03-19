@@ -1,4 +1,4 @@
-var backgroundImg = loadImage("islands.png");
+var backgroundImg;
 var backgroundY = 0;
 var player = {x: 250, y:450, size:40};
 var speed = 5;
@@ -10,6 +10,10 @@ var enemies = [];
 var rate = 3;
 var crashed = false;
 
+var setup = function() {
+  createCanvas(500, 500);
+  backgroundImg = loadImage("islands.png");
+}
 
 var draw = function () {
   if(!crashed) {
