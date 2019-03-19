@@ -1,14 +1,15 @@
-var gridSize = 20;
-var snake;
-var newDir;
-var timer;
-var tickSpeed;
-var apple;
-var score;
-var crashed;
-var paused;
+let gridSize = 20;
+let snake;
+let newDir;
+let timer;
+let tickSpeed;
+let apple;
+let score;
+let crashed;
+let paused;
 
 var setup = function() {
+  createCanvas(500, 500);
   background(0);
   newDir = "right";
   timer = millis();
@@ -56,7 +57,7 @@ var draw = function() {
   }
 }
 var crashCheck = function() {
-  for(var i = 0; i < snake.tail.length; i++) {
+  for(let i = 0; i < snake.tail.length; i++) {
     if(snake.x == snake.tail[i].x && snake.y == snake.tail[i].y) {
       crashed = true;
       fill(255, 255, 0);
@@ -71,7 +72,7 @@ var crashCheck = function() {
 var drawSnake = function() {
   fill(255, 255, 0);
   ellipse(snake.x, snake.y, gridSize, gridSize);
-  for(var i = 0; i < snake.tail.length; i++) {
+  for(let i = 0; i < snake.tail.length; i++) {
     fill(0, 255, 0);
     stroke(0, 0, 0);
     strokeWeight(1);
@@ -96,7 +97,7 @@ var moveSnake = function() {
 var moveApple = function() {
   apple.x = floor(random(0, width/gridSize))*gridSize + 10;
   apple.y = floor(random(0, height/gridSize))*gridSize + 10;
-  for(var i = 0; i < snake.tail.length; i++) {
+  for(let i = 0; i < snake.tail.length; i++) {
     if(apple.x === snake.tail[i].x && apple.y === snake.tail[i].y) {
       moveApple();
     }
@@ -115,7 +116,7 @@ var wrap = function() {
 };
 var drawScore = function() {
   fill(255, 255, 255);
-  stroke();
+  stroke(0);
   textSize(36);
   text(score, 250, 0)
   noStroke();
@@ -132,16 +133,16 @@ var eatApple = function() {
   }
 }
 var keyPressed = function() {
-  if(keyCode === RIGHT && snake.dir !== "left") {
+  if(keyCode === RIGHT_ARROW && snake.dir !== "left") {
     newDir = "right";
   }
-  if(keyCode === LEFT && snake.dir !== "right") {
+  if(keyCode === LEFT_ARROW && snake.dir !== "right") {
     newDir = "left";
   }
-  if(keyCode === UP && snake.dir !== "down") {
+  if(keyCode === UP_ARROW && snake.dir !== "down") {
     newDir = "up";
   }
-  if(keyCode === DOWN && snake.dir !== "up") {
+  if(keyCode === DOWN_ARROW && snake.dir !== "up") {
     newDir = "down";
   }
   if(keyCode === 82 && crashed) {
