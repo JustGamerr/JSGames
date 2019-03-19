@@ -64,17 +64,20 @@ var doEnemies = function() {
 }
 
 var keyPressed = function() {
-  if(keyCode == RIGHT) {
+  if(keyCode == RIGHT_ARROW) {
     right = true;
   }
-  if(keyCode == LEFT) {
+  if(keyCode == LEFT_ARROW) {
     left = true;
   }
-  if(keyCode == UP) {
+  if(keyCode == UP_ARROW) {
     up = true
   }
-  if(keyCode == DOWN) {
+  if(keyCode == DOWN_ARROW) {
     down = true;
+  }
+  if(keyCode === 82 && crashed) {
+    setup();
   }
 }
 
@@ -102,16 +105,16 @@ var collision = function(enemy, player) {
   return false;
 };
 var keyReleased = function() {
-  if(keyCode == RIGHT) {
+  if(keyCode == RIGHT_ARROW) {
     right = false;
   }
-  if(keyCode == LEFT) {
+  if(keyCode == LEFT_ARROW) {
     left = false;
   }
-  if(keyCode == UP) {
+  if(keyCode == UP_ARROW) {
     up = false
   }
-  if(keyCode == DOWN) {
+  if(keyCode == DOWN_ARROW) {
     down = false;
   }
 }
