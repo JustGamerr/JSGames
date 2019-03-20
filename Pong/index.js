@@ -114,6 +114,16 @@ function moveBall() {
     ball.spdx -= 0.5;
   }
 
+  if(ball.spdx > 10)
+    ball.spdx = 10;
+  if(ball.spdx < -10)
+    ball.spdx = 10;
+
+  if(ball.spdy > 10)
+    ball.spdy = 10;
+  if(ball.spdy < -10)
+    ball.spdy = 10;
+
 }
 
 function movePlayers() {
