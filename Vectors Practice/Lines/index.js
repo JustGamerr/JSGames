@@ -1,8 +1,17 @@
-var point1 = {x: 250, y:250, xspeed:random(-10, 10), yspeed: random(-10, 10)};
-var point2 = {x: 250, y:250, xspeed:random(-10, 10), yspeed: random(-10, 10)};
-var point3 = {x: 250, y:250, xspeed:random(-10, 10), yspeed: random(-10, 10)};
-var point4 = {x: 250, y:250, xspeed:random(-10, 10), yspeed: random(-10, 10)};
+var point1;
+var point2;
+var point3;
+var point4;
 var h = 50;
+
+var setup = function() {
+  createCanvas(750, 750);
+
+  point1 = {x: 250, y:250, xspeed:random(-10, 10), yspeed: random(-10, 10)};
+  point2 = {x: 250, y:250, xspeed:random(-10, 10), yspeed: random(-10, 10)};
+  point3 = {x: 250, y:250, xspeed:random(-10, 10), yspeed: random(-10, 10)};
+  point4 = {x: 250, y:250, xspeed:random(-10, 10), yspeed: random(-10, 10)};
+}
 
 var draw = function() {
   colorMode(HSB);
