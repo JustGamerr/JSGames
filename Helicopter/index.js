@@ -13,6 +13,10 @@ var wallTimer = 0
 //   setInterval(createSmoke, 100)
 // }
 
+var setup = function() {
+  createCanvas(500, 500);
+}
+
 var draw = function() {
   noStroke();
   background(0,0,0)
@@ -89,7 +93,7 @@ var drawPlayer = function() {
 }
 var movePlayer = function() {
   if(goUp) {
-    gravity -= 0.4;
+    gravity -= 0.8;
   } else {
     gravity += 0.4;
   }
@@ -129,7 +133,7 @@ var doCoin = function() {
 }
 var mousePressed = function() {
   if(mouseButton === LEFT) {
-    goUp = true
+    goUp = true;
 
     if(crashed) {
       crashed = false;
@@ -149,7 +153,7 @@ var mouseReleased = function() {
   }
 }
 var drawScore = function() {
-  fill(255, 255, 0);
+  fill(0, 0, 255);
   textSize(24);
   text(score, 50, 450);
 };
