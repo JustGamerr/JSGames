@@ -6,7 +6,7 @@ var scoreP1 = 0;
 var scoreP2 = 0;
 
 var setup = function() {
-  size(500, 500);
+  createCanvas(500, 500);
   player1 = {
     x: 10,
     y: 200,
