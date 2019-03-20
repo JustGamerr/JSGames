@@ -1,6 +1,10 @@
 var block = {x: 0, y: 50, w: 50, h: 50, xspeed: random(3,20), yspeed: random(5,15), hue: 0}
 var blocka = {x: 50, y: 450, w: 50, h: 50, xspeed: random(1,6), yspeed: random(1,6), hue: 0}
 
+var setup = function() {
+  createCanvas(500, 500);
+}
+
 var draw = function() {
   noStroke()
   colorMode(HSB, 100);
