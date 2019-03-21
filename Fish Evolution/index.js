@@ -10,7 +10,7 @@ function setup() {
     createCanvas(cWidth, cHeight);
     colorMode(HSB, 100);
 
-    while(fishArray.length < 5) {
+    while(fishArray.length < 10) {
         fish = new Fish(random(cWidth - 20) + 10, random(cHeight - 20) + 10);
         fish.mutate();
         fishArray.push(fish);
