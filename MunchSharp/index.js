@@ -7,21 +7,27 @@ var right = false;
 var up = false;
 var down = false;
 var enemies = [];
-var rate = 3;
+var rate = 2;
 var crashed = false;
+var score = 0;
 
 var setup = function() {
-  createCanvas(500, 500);
+  createCanvas(750, 500);
+  //noStroke();
+  fill(255, 255, 255, 75);
+  rect(0, 0, 750, 500);
 }
 
 var draw = function () {
   if(!crashed) {
-    noStroke();
-    fill(255, 255, 255, 25);
-    rect(0, 0, 500, 500);
+  //  noStroke();
+    fill(255, 255, 255, 75);
+    rect(0, 0, 750, 500);
+  //  stroke(0);
     drawPlayer();
     movePlayer();
     drawEnemies();
+    drawScore();
     doEnemies();
   }
 }
@@ -34,7 +40,7 @@ var movePlayer = function() {
   if(left && player.x > 20) {
     player.x -= speed;
   }
-  if(right && player.x < 480) {
+  if(right && player.x < 730) {
     player.x += speed;
   }
   if(up && player.y > 30) {
@@ -53,7 +59,7 @@ var drawEnemies = function() {
 
 var doEnemies = function() {
   if(random(0, 100) < rate) {
-    var newEnemy = {x:random(0, 500), y: -50, yspeed: random(1,5), size: random(10, 100)};
+    var newEnemy = {x:random(0, 750), y: -50, yspeed: random(1,5), size: random(10, 20)};
     enemies.push(newEnemy);
   }
   for(var enemy of enemies) {
@@ -79,7 +85,27 @@ var keyPressed = function() {
   }
   if(keyCode === 82 && crashed) {
     setup();
+    crashed = false;
   }
+  if(keyCode == 80 && !crashed) {
+    if(paused) {
+      paused = false;
+    } else {
+      paused = true;
+      fill(30, 30, 30);
+      rect(width/2 - 100, height/2 - 50, 200, 100);
+      fill(0, 255, 0);
+      text("PAUSED", width/2, height/2 - 20)
+    }
+  }
+}
+
+var drawScore = function() {
+  fill(0);
+  stroke(0);
+  textSize(48);
+  text(score, 375, 100);
+  noStroke();
 }
 
 var collision = function(enemy, player) {
