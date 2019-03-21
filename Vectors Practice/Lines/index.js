@@ -36,10 +36,10 @@ var move = function(point) {
   point.x += point.xspeed;
   point.y += point.yspeed;
 
-  if(point.x > 500 || point.x < 0) {
+  if(point.x > 750 || point.x < 0) {
     point.xspeed *= -1;
   }
-  if(point.y > 500 || point.y < 0) {
+  if(point.y > 750 || point.y < 0) {
     point.yspeed *= -1;
   }
 };
