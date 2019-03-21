@@ -119,4 +119,3 @@ var keyReleased = function() {
     down = false;
   }
 }
-}
