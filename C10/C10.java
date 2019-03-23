@@ -1,8 +1,5 @@
 /*
- Evan Halliday
- Programming 2
  March 29th, 2019
- Period 5
  Classwork #10
 */
 
