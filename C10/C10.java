@@ -36,6 +36,9 @@ public class C10 implements ActionListener
 	private JCheckBox qOneOptOne;
 	private JCheckBox qOneOptTwo;
 	private JCheckBox qOneOptThree;
+	private JCheckBox qFourOptOne;
+	private JCheckBox qFourOptTwo;
+	private JCheckBox qFourOptThree;
 	private JComboBox<String> qThreeComboBox;
 	private JMenuBar quizMenuBar;
 	private JMenu quizFileMenu;
@@ -150,7 +153,28 @@ public class C10 implements ActionListener
 		qThreeAnswerLabel.setFont(new Font("Arial", Font.BOLD, 24));
 		qThreeAnswerLabel.setBackground(Color.WHITE);
 		qThreeAnswerLabel.setVisible(false);
+		
+		qFourOptOne = new JCheckBox("Dia");
+		qFourOptOne.addActionListener(this);
+		qFourOptOne.setFont(new Font("Arial", Font.BOLD, 18));
+		qFourOptOne.setBackground(Color.WHITE);
+		qFourOptOne.setBounds(simpleQuizFrame.getWidth() / 2 - 50, simpleQuizFrame.getHeight() / 2 - 125, 150, 35);
+		qFourOptOne.setVisible(false);
 
+		qFourOptTwo = new JCheckBox("Titan");
+		qFourOptTwo.addActionListener(this);
+		qFourOptTwo.setFont(new Font("Arial", Font.BOLD, 18));
+		qFourOptTwo.setBackground(Color.WHITE);
+		qFourOptTwo.setBounds(simpleQuizFrame.getWidth() / 2 - 50, simpleQuizFrame.getHeight() / 2 - 75, 150, 35);
+		qFourOptTwo.setVisible(false);
+
+		qFourOptThree = new JCheckBox("Enceladus");
+		qFourOptThree.addActionListener(this);
+		qFourOptThree.setFont(new Font("Arial", Font.BOLD, 18));
+		qFourOptThree.setBackground(Color.WHITE);
+		qFourOptThree.setBounds(simpleQuizFrame.getWidth() / 2 - 50, simpleQuizFrame.getHeight() / 2 - 25, 100, 35);
+		qFourOptThree.setVisible(false);
+		
 		submitAnswerButton = new JButton("Submit Answer");
 		submitAnswerButton.setFont(new Font("Arial", Font.BOLD, 24));
 		submitAnswerButton.setSize(220, 50);
@@ -242,6 +266,10 @@ public class C10 implements ActionListener
 
 		simpleQuizFrame.add(qThreeComboBox);
 		simpleQuizFrame.add(qThreeAnswerLabel);
+		
+		simpleQuizFrame.add(qFourOptOne);
+		simpleQuizFrame.add(qFourOptTwo);
+		simpleQuizFrame.add(qFourOptThree);
 
 		simpleQuizFrame.add(titleTextLabel);
 		simpleQuizFrame.add(qTextLabel);
@@ -293,7 +321,6 @@ public class C10 implements ActionListener
 		qOneOptOne.setVisible(false);
 		qOneOptTwo.setVisible(false);
 		qOneOptThree.setVisible(false);
-		simpleQuizFrame.remove(tickLabel2);
 		arrowLabel.setVisible(false);
 		arrowLabel2.setVisible(false);
 		tickLabel.setVisible(false);
@@ -344,6 +371,31 @@ public class C10 implements ActionListener
 		qThreeAnswerLabel.setVisible(false);
 		xLabel.setVisible(false);
 		tickLabel.setVisible(false);
+		nextQButton.setVisible(false);
+	}
+	
+	public void showQFour()
+	{
+		currentQuestion = 4;
+		qTextLabel.setVisible(true);
+		qTextLabel.setSize(350, 50);
+		qTextLabel.setLocation(simpleQuizFrame.getWidth() / 2 - 175, simpleQuizFrame.getHeight() / 2 - 185);
+		qTextLabel.setText("#4: Which of these are moons of Saturn?");
+		qFourOptOne.setVisible(true);
+		qFourOptTwo.setVisible(true);
+		qFourOptThree.setVisible(true);
+	}
+	
+	public void hideQFour() 
+	{
+		qFourOptOne.setVisible(false);
+		qFourOptTwo.setVisible(false);
+		qFourOptThree.setVisible(false);
+		arrowLabel.setVisible(false);
+		arrowLabel2.setVisible(false);
+		tickLabel.setVisible(false);
+		tickLabel2.setVisible(false);
+		xLabel.setVisible(false);
 		submitAnswerButton.setVisible(false);
 		nextQButton.setVisible(false);
 	}
@@ -372,7 +424,7 @@ public class C10 implements ActionListener
 	{
 		if (e.getActionCommand().equals("Start Quiz"))
 		{
-			if (showScoreLabel.isVisible() == false)
+			//if (showScoreLabel.isVisible() == false)
 				startQuiz();
 		}
 
@@ -594,6 +646,116 @@ public class C10 implements ActionListener
 					nextQButton.setVisible(true);
 				}
 			}
+			
+			if (currentQuestion == 4)
+			{
+				if (qFourOptOne.isSelected() && qFourOptTwo.isSelected() == false && qFourOptThree.isSelected() == false)
+				{
+					score += 0;
+					arrowLabel.setLocation(simpleQuizFrame.getWidth() / 2 + 100, simpleQuizFrame.getHeight() / 2 - 55);
+					tickLabel.setLocation(simpleQuizFrame.getWidth() / 2 + 90, simpleQuizFrame.getHeight() / 2 - 145);
+					qOneOptOne.setForeground(Color.GREEN);
+					qOneOptTwo.setForeground(Color.RED);
+					qOneOptTwo.setEnabled(false);
+					qOneOptThree.setEnabled(false);
+					arrowLabel.setVisible(true);
+					tickLabel.setVisible(true);
+					nextQButton.setVisible(true);
+				}
+
+				if (qFourOptOne.isSelected() && qFourOptTwo.isSelected() && qFourOptThree.isSelected() == false)
+				{
+					score += 0;
+					tickLabel.setLocation(simpleQuizFrame.getWidth() / 2 + 90, simpleQuizFrame.getHeight() / 2 - 145);
+					xLabel.setLocation(simpleQuizFrame.getWidth() / 2 + 95, simpleQuizFrame.getHeight() / 2 - 75);
+					arrowLabel2.setLocation(simpleQuizFrame.getWidth() / 2 + 100, simpleQuizFrame.getHeight() / 2 - 55);
+					qOneOptOne.setForeground(Color.GREEN);
+					qOneOptTwo.setForeground(Color.RED);
+					qOneOptThree.setEnabled(false);
+					tickLabel.setVisible(true);
+					xLabel.setVisible(true);
+					arrowLabel2.setVisible(true);
+					nextQButton.setVisible(true);
+
+				}
+
+				if (qFourOptOne.isSelected() == false && qFourOptTwo.isSelected() && qFourOptThree.isSelected() == false)
+				{
+					score += 0;
+					arrowLabel2.setLocation(simpleQuizFrame.getWidth() / 2 + 100, simpleQuizFrame.getHeight() / 2 - 155);
+					arrowLabel.setLocation(simpleQuizFrame.getWidth() / 2 + 100, simpleQuizFrame.getHeight() / 2 - 55);
+					xLabel.setLocation(simpleQuizFrame.getWidth() / 2 + 95, simpleQuizFrame.getHeight() / 2 - 75);
+					qOneOptTwo.setForeground(Color.RED);
+					qOneOptOne.setEnabled(false);
+					qOneOptThree.setEnabled(false);
+					arrowLabel.setVisible(true);
+					arrowLabel2.setVisible(true);
+					xLabel.setVisible(true);
+					submitAnswerButton.setEnabled(false);
+					nextQButton.setVisible(true);
+				}
+
+				if (qFourOptOne.isSelected() == false && qFourOptTwo.isSelected() && qFourOptThree.isSelected())
+				{
+					score += 0;
+					arrowLabel.setLocation(simpleQuizFrame.getWidth() / 2 + 100, simpleQuizFrame.getHeight() / 2 - 155);
+					tickLabel.setLocation(simpleQuizFrame.getWidth() / 2 + 95, simpleQuizFrame.getHeight() / 2 - 45);
+					xLabel.setLocation(simpleQuizFrame.getWidth() / 2 + 95, simpleQuizFrame.getHeight() / 2 - 75);
+					qOneOptTwo.setForeground(Color.RED);
+					qOneOptThree.setForeground(Color.GREEN);
+					qOneOptOne.setEnabled(false);
+					arrowLabel.setVisible(true);
+					tickLabel.setVisible(true);
+					xLabel.setVisible(true);
+					submitAnswerButton.setEnabled(false);
+					nextQButton.setVisible(true);
+				}
+
+				if (qFourOptOne.isSelected() == false && qFourOptTwo.isSelected() == false && qFourOptThree.isSelected())
+				{
+					score += 0;
+					tickLabel.setLocation(simpleQuizFrame.getWidth() / 2 + 90, simpleQuizFrame.getHeight() / 2 - 45);
+					arrowLabel2.setLocation(simpleQuizFrame.getWidth() / 2 + 100, simpleQuizFrame.getHeight() / 2 - 155);
+					qOneOptThree.setForeground(Color.GREEN);
+					qOneOptOne.setEnabled(false);
+					qOneOptTwo.setEnabled(false);
+					tickLabel.setVisible(true);
+					arrowLabel2.setVisible(true);
+					submitAnswerButton.setEnabled(false);
+					nextQButton.setVisible(true);
+				}
+
+				if (qFourOptOne.isSelected() && qFourOptTwo.isSelected() == false && qFourOptThree.isSelected())
+				{
+					score += 1;
+					tickLabel.setLocation(simpleQuizFrame.getWidth() / 2 + 90, simpleQuizFrame.getHeight() / 2 - 145);
+					tickLabel2.setLocation(simpleQuizFrame.getWidth() / 2 + 90, simpleQuizFrame.getHeight() / 2 - 45);
+					qOneOptOne.setForeground(Color.GREEN);
+					qOneOptThree.setForeground(Color.GREEN);
+					qOneOptTwo.setEnabled(false);
+					tickLabel.setVisible(true);
+					tickLabel2.setVisible(true);
+					submitAnswerButton.setEnabled(false);
+					nextQButton.setVisible(true);
+
+				}
+
+				if (qFourOptOne.isSelected() && qFourOptTwo.isSelected() && qFourOptThree.isSelected())
+				{
+					score += 0;
+					tickLabel.setLocation(simpleQuizFrame.getWidth() / 2 + 100, simpleQuizFrame.getHeight() / 2 - 45);
+					tickLabel2.setLocation(simpleQuizFrame.getWidth() / 2 + 100, simpleQuizFrame.getHeight() / 2 - 145);
+					xLabel.setLocation(simpleQuizFrame.getWidth() / 2 + 100, simpleQuizFrame.getHeight() / 2 - 80);
+					qOneOptOne.setForeground(Color.GREEN);
+					qOneOptTwo.setForeground(Color.RED);
+					qOneOptThree.setForeground(Color.GREEN);
+					xLabel.setVisible(true);
+					tickLabel.setVisible(true);
+					tickLabel2.setVisible(true);
+					submitAnswerButton.setEnabled(false);
+					nextQButton.setVisible(true);
+				}
+			}
 		}
 
 		if (e.getActionCommand().equals("Next Question"))
@@ -611,6 +773,13 @@ public class C10 implements ActionListener
 			{
 				hideQTwo();
 				showQThree();
+				return;
+			}
+			
+			if (currentQuestion == 3)
+			{
+				hideQThree();
+				showQFour();
 				return;
 			}
 		}
