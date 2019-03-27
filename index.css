@@ -1,0 +1,10 @@
+/* body {
+  display: block;
+  margin: 8px;
+} */
+body {
+  height: 100px;
+  background-color: red; /* For browsers that do not support gradients */
+  background: linear-gradient(45deg, #ff5050, #ff5050 55%, #0099ff);
+  /*background-image: linear-gradient(135deg, lightblue, blue);  Standard syntax (must be last) */
+}
