@@ -8,9 +8,9 @@ var shipImg5
 
 function preload()
 {
-  bkgImage = loadImage("bkgImage.jpg")
-  p1Img = loadImage("p1full.gif")
-  p1IdleImg = loadImage("p1idle.png")
-  p1FlameImg = loadImage("p1fullflame.png")
-  p1MovingImg = loadImage("p1moving.gif")
+  bkgImage = loadImage("resources/bkgImage.jpg")
+  p1Img = loadImage("resources/p1full.gif")
+  p1IdleImg = loadImage("resources/p1idle.png")
+  p1FlameImg = loadImage("resources/p1fullflame.png")
+  p1MovingImg = loadImage("resources/p1moving.gif")
 }
