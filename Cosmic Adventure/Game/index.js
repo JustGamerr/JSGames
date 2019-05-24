@@ -23,9 +23,9 @@ function setup()
   canvas = createCanvas(500, 500);
   centerScreen();
   canvas.parent('cosmic-game-holder');
-  var startButton = new Button(250, 250, 100, 50, "Start Game", function () { menu.page = 1 }, color(130, 0, 180), color(180, 0, 255));
+  var startButton = new Button(250, 250, 150, 50, "Start Game", function () { menu.page = 1 }, color(130, 0, 180), color(180, 0, 255));
   var singleButton = new Button(250, 250, 200, 50, "Single Player", function () { players = [player]; start(); }, color(130, 0, 180), color(180, 0, 255));
-  var twoButton = new Button(250, 375, 200, 50, "Two Player", function () { players = [player, player2]; start(); }, color(130, 0, 180), color(180, 0, 255));
+  var twoButton = new Button(250, 375, 200, 50, "Split Screen", function () { players = [player, player2]; start(); }, color(130, 0, 180), color(180, 0, 255));
   menu = new Menu("Cosmic Adventure", [[startButton], [singleButton, twoButton]]);
 }
 
