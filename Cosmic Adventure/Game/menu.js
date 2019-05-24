@@ -21,7 +21,7 @@ class Menu
       button.draw();
       if(register[LEFT] && button.mouseCollide())
       {
-        button.func();
+        button.action();
         register[LEFT] = false;
       }
     }
