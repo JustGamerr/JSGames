@@ -6,6 +6,7 @@ class Menu {
         this.color = bc || color(0, 0, 0);
         this.textColor = tc || color(255, 255, 255);
     }
+
     draw(){
         background(this.color);
         fill(this.textColor);

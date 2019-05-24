@@ -5,8 +5,9 @@ class Menu
     this.text = text;
     this.pages = pages;
     this.page = 0;
-    this.backgroundColor = bc || color(135,206,250);
-    this.textColor = tc || color(255,0,0);
+    this.backgroundColor = bc || color(0, 0, 0);
+    this.textColor = tc || color(0, 191, 255);
+
   }
   draw()
   {
