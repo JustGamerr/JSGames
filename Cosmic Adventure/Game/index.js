@@ -40,11 +40,18 @@ function draw()
 
 function start()
 {
+  var rows = 1;
+  var columns = 1;
   background(0);
   playing = true;
+
+  if (players.length > 1) {
+    rows = 2;
+    columns = 2;
+  }
 }
 
 function windowResized()
 {
-  centerScreen();
+  centerScreen();y
 }
