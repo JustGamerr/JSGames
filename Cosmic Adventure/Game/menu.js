@@ -38,7 +38,7 @@ class Button
     this.text = text;
     this.action = action;
     this.color = color;
-    this.textColor = textColor;
+    this.hoverColor = hoverColor;
   }
 
   mouseCollide()
