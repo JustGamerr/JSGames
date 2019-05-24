@@ -22,6 +22,7 @@ function setup()
   canvas = createCanvas(500, 500);
   centerScreen();
   canvas.parent('cosmic-game-holder');
+  var startButton = new Button(250, 250, 100, 50, "Start Game", function () { menu.page = 1 }, color(130, 0, 180), color(180, 0, 255));
   menu = new Menu("Cosmic Adventure", 2, color(0, 0, 0), color(0, 191, 255));
 }
 
