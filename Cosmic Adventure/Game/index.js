@@ -64,10 +64,9 @@ function start()
     screens.push(new GameMap(width * 0.75, height * 0.75, width / 2, height / 2, {x: -1250, y:-1500}, 3000, 2000));
   }
 
-
 }
 
 function windowResized()
 {
-  centerScreen();y
+  centerScreen();
 }
