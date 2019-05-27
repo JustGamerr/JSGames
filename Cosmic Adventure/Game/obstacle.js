@@ -30,3 +30,9 @@ var findCorners = function(obj)
 
   return corners;
 }
+
+var rotatedRectangularCollision = function(obj1, obj2)
+{
+  var o1c = findCorners(obj1);
+  var o2c = findCorners(obj2);
+}
