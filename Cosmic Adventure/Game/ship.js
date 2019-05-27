@@ -11,4 +11,29 @@ class Ship
     this.speed = speed
     this.direction = direction
   }
+
+  draw(target)
+  {
+
+  }
+
+  move()
+  {
+
+  }
+
+  shoot()
+  {
+
+  }
+
+  update(c)
+  {
+
+  }
+
+  checkFree(x, y, direction)
+  {
+
+  }
 }
