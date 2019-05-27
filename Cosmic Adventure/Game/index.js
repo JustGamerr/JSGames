@@ -30,25 +30,11 @@ function setup()
   menu = new Menu("Cosmic Adventure", [[startButton], [singleButton, twoButton]]);
 }
 
-function draw()
-{
-  if(!playing)
-  {
-    menu.draw();
-    return;
-  }
-
-  for(var player of players)
-  {
-    player.move();
-    player.shoot();
-  }
-}
-
 function start()
 {
   var rows = 1;
   var columns = 1;
+
   background(0);
   playing = true;
 
@@ -68,6 +54,47 @@ function start()
     screens.push(new GameMap(width * 0.75, height * 0.75, width / 2, height / 2, {x: -1250, y:-1500}, 3000, 2000));
   }
 
+}
+
+function draw()
+{
+  if(!playing)
+  {
+    menu.draw();
+    return;
+  }
+
+  for(var player of players)
+  {
+    player.move();
+    player.shoot();
+  }
+
+  for(var screen of screens)
+  {
+    var screenCanvas = screen.canvas;
+
+    screenCanvas.push();
+    screenCanvas.translate(-screen.focus.x + -screen.focus.y + 250);
+
+    screenCanvas.push();
+    screenCanvas.translate(0, -750);
+    screenCanvas.image(bkgImage, 0, 0, 3000, 2000);
+    screenCanvas.pop();
+
+    for(var player of players)
+    {
+      player.draw(screenCanvas);
+    }
+
+    for(var obstacle of obstacles)
+    {
+      obstacle.draw(screenCanvas);
+    }
+
+    screenCanvas.pop();
+    drawHUD(screenCanvas);
+  }
 }
 
 function windowResized()
