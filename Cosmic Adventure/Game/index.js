@@ -38,7 +38,8 @@ function draw()
     return;
   }
 
-  for(var player of players) {
+  for(var player of players)
+  {
     player.move();
     player.shoot();
   }
