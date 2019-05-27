@@ -78,7 +78,7 @@ function draw()
     var screenCanvas = screen.canvas;
 
     screenCanvas.push();
-    screenCanvas.translate(-screen.focus.x + -screen.focus.y + 250);
+    screenCanvas.translate(-screen.screenFocus.x + 250, -screen.focus.y + 250);
 
     screenCanvas.push();
     screenCanvas.translate(0, -750);
