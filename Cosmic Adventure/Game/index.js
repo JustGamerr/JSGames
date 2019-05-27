@@ -24,8 +24,6 @@ function setup()
   centerScreen();
   canvas.parent('cosmic-game-holder');
 
-  players = [player2, player];
-
   var startButton = new Button(250, 250, 150, 50, "Start Game", function () { menu.page = 1 }, color(130, 0, 180), color(180, 0, 255));
   var singleButton = new Button(250, 250, 200, 50, "Single Player", function () { players = [player]; start(); }, color(130, 0, 180), color(180, 0, 255));
   var twoButton = new Button(250, 375, 200, 50, "Split Screen", function () { players = [player, player2]; start(); }, color(130, 0, 180), color(180, 0, 255));
@@ -38,6 +36,11 @@ function draw()
   {
     menu.draw();
     return;
+  }
+
+  for(var player of players) {
+    player.move();
+    player.shoot();
   }
 }
 
