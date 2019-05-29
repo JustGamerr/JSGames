@@ -30,7 +30,7 @@ class Ship
     this.strafeRight = controls[6];
 
     this.shootDelay = 0;
-    this.img = img;
+    this.image = image;
     this.shootTime = 20;
     this.place = 1;
   }
@@ -40,7 +40,7 @@ class Ship
     target.push()
     target.translate(this.x, this.y);
     target.rotate(this.direction);
-    target.image(this.img, 0, 0, this.width, this.height);
+    target.image(this.image, 0, 0, this.width, this.height);
     target.pop();
   }
 
