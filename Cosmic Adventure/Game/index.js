@@ -21,12 +21,10 @@ function setup()
   imageMode(CENTER);
   noStroke();
   canvas = createCanvas(500, 500);
-  centerScreen();
   canvas.parent('cosmic-game-holder');
 
   player = new Ship(0, 0, 40, 20, [UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW], p1IdleImg, 1, 2);
   player2 = new Ship(0, 30, 40, 20, [87, 83, 65, 68, 32, 81, 69, LEFT], p2IdleImg, 2, 2);
-
   var startButton = new Button(250, 250, 150, 50, "Start Game", function () { menu.page = 1 }, color(130, 0, 180), color(180, 0, 255));
   var singleButton = new Button(250, 250, 200, 50, "Single Player", function () { players = [player]; start(); }, color(130, 0, 180), color(180, 0, 255));
   var twoButton = new Button(250, 375, 200, 50, "Split Screen", function () { players = [player, player2]; start(); }, color(130, 0, 180), color(180, 0, 255));
@@ -41,7 +39,7 @@ function start()
   background(0);
   playing = true;
 
-  if (players.length == 2)
+  if (players.length > 1)
   {
     rows = 2;
     columns = 2;
@@ -52,7 +50,7 @@ function start()
     screens.push(new Screen((width / 2 + i % 2 * width) / columns, (height / 2  + floor(i / 2) * height) / rows, width / columns, height / rows, players[i]));
   }
 
-  if(players.length == 2)
+  if(players.length > 1)
   {
     screens.push(new GameMap(width * 0.75, height * 0.75, width / 2, height / 2, {x: -1250, y:-1500}, 3000, 2000));
   }
@@ -66,6 +64,8 @@ function draw()
     menu.draw();
     return;
   }
+
+  centerScreen();
 
   for(var player of players)
   {
