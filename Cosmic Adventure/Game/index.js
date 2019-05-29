@@ -94,10 +94,10 @@ function draw()
       player.draw(screenCanvas);
     }
 
-    // for(var obstacle of obstacles)
-    // {
-    //   obstacle.draw(screenCanvas);
-    // }
+    for(var obstacle of obstacles)
+    {
+      obstacle.draw(screenCanvas);
+    }
     //finish.draw(screenCanvas);
 
     screenCanvas.pop();
