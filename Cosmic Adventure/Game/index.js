@@ -20,8 +20,10 @@ function setup()
   rectMode(CENTER);
   imageMode(CENTER);
   noStroke();
-  canvas = createCanvas(500, 500);
-  canvas.parent('cosmic-game-holder');
+
+  createCanvas(500, 500);
+  //canvas = createCanvas(500, 500);
+  //canvas.parent('cosmic-game-holder');
 
   player = new Ship(0, 0, 40, 20, [UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW], p1IdleImg, 1, 2);
   player2 = new Ship(0, 30, 40, 20, [87, 83, 65, 68, 32, 81, 69, LEFT], p2IdleImg, 2, 2);
@@ -65,7 +67,7 @@ function draw()
     return;
   }
 
-  centerScreen();
+  //centerScreen();
 
   for(var player of players)
   {
