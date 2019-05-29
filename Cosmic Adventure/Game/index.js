@@ -64,7 +64,7 @@ function draw()
 
       c.push()
       c.translate(0, -750)
-      c.image(starsImg, 0, 0, 3000, 2000)
+      c.image(bkgImg, 0, 0, 3000, 2000)
       c.pop()
 
       // for (var p of projectiles) {
