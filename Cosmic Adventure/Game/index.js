@@ -85,15 +85,20 @@ function draw()
     screenCanvas.image(bkgImage, 0, 0, 3000, 2000);
     screenCanvas.pop();
 
+    // for(var projectile of projectiles) {
+    //   projectile.draw(screenCanvas);
+    // }
+
     for(var player of players)
     {
       player.draw(screenCanvas);
     }
 
-    for(var obstacle of obstacles)
-    {
-      obstacle.draw(screenCanvas);
-    }
+    // for(var obstacle of obstacles)
+    // {
+    //   obstacle.draw(screenCanvas);
+    // }
+    //finish.draw(screenCanvas);
 
     screenCanvas.pop();
     drawHUD(screenCanvas);
