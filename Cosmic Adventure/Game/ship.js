@@ -95,26 +95,16 @@ class Ship
         this.velocityY = (this.y-o.y)/abs(this.y-o.y)*abs(this.velocityY)/5;
     }
 
-    for (var c of checkpoints) {
-        if (rotatedRectangularCollision(this, c)) {
-            if(!c.players[this.id]){
-                c.players[this.id] = true;
-                this.nextCheckpoint++;
-            }
-
-        }
-    }
-
-    if (rotatedRectangularCollision(this, finish)) {
-        for (var c of checkpoints) {
-            if (!c.players[this.id]) {
-                return;
-            }
-            c.players[this.id] = false;
-        }
-        this.lap++;
-        console.log(this.lap);
-    }
+    // if (rotatedRectangularCollision(this, finish)) {
+    //     for (var c of checkpoints) {
+    //         if (!c.players[this.id]) {
+    //             return;
+    //         }
+    //         c.players[this.id] = false;
+    //     }
+    //     this.lap++;
+    //     console.log(this.lap);
+    // }
   }
 
   shoot()
