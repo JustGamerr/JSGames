@@ -9,19 +9,17 @@ var screens = [];
 var playing = false;
 var menu;
 
-
 function setup() {
-
     rectMode(CENTER);
     imageMode(CENTER);
     noStroke();
     createCanvas(500, 500);
     player2 = new Ship(0, 0, 40, 20, [UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW], shipImg3, 1, 2);
     player = new Ship(0, 30, 40, 20, [87, 83, 65, 68, 32, 81, 69, LEFT], shipImg2, 2, 2);
-    let startButton = new Button(250, 250, 100, 50, "Start", function () { menu.page = 1 }, color(130, 0, 180), color(180, 0, 255));
-    let singlePlayer = new Button(250, 250, 200, 50, "One Player", function () { players = [player]; start(); }, color(130, 0, 180), color(180, 0, 255));
-    let twoPlayer = new Button(250, 375, 200, 50, "Two Player", function () { players = [player, player2]; start(); }, color(130, 0, 180), color(180, 0, 255));
-    menu = new Menu("Space Game", [[startButton], [singlePlayer, twoPlayer]])
+    let startButton = new Button(250, 250, 100, 50, "Start Game", function () { menu.page = 1 }, color(130, 0, 180), color(180, 0, 255));
+    let singleButton = new Button(250, 250, 200, 50, "Single Player", function () { players = [player]; start(); }, color(130, 0, 180), color(180, 0, 255));
+    let splitButton = new Button(250, 375, 200, 50, "Split Screen", function () { players = [player, player2]; start(); }, color(130, 0, 180), color(180, 0, 255));
+    menu = new Menu("Cosmic Adventure", [[startButton], [singleButton, splitButton]])
     setInterval(positionRanking,500)
 }
 
