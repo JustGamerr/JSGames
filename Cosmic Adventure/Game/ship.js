@@ -54,7 +54,7 @@ class Ship
     }
     this.turnSpeed *= 0.85;
 
-    if (this.placeFree(this.x, this.y, this.direction + this.turnSpeed) == true) {
+    if (this.checkFree(this.x, this.y, this.direction + this.turnSpeed) == true) {
         this.direction += this.turnSpeed;
     } else {
         this.turnSpeed = 0;
@@ -86,11 +86,11 @@ class Ship
 
     this.velocityX *= 0.95;
     this.velocityY *= 0.95;
-    if (this.placeFree(this.x + this.velocityX, this.y+this.velocityY, this.direction)== true) {
+    if (this.checkFree(this.x + this.velocityX, this.y+this.velocityY, this.direction)== true) {
         this.x += this.velocityX;
         this.y += this.velocityY;
     } else {
-        let o = this.placeFree(this.x + this.velocityX, this.y+this.velocityY, this.direction)
+        let o = this.checkFree(this.x + this.velocityX, this.y+this.velocityY, this.direction)
         this.velocityX = (this.x-o.x)/abs(this.x-o.x)*abs(this.velocityX)/5;
         this.velocityY = (this.y-o.y)/abs(this.y-o.y)*abs(this.velocityY)/5;
     }
