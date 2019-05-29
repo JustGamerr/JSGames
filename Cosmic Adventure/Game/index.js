@@ -12,17 +12,13 @@ function setup()
   rectMode(CENTER);
   imageMode(CENTER);
   noStroke();
-
   createCanvas(500, 500);
-  //canvas = createCanvas(500, 500);
-  //canvas.parent('cosmic-game-holder');
-
-  player = new Ship(0, 0, 40, 20, [UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW], p1IdleImg, 1, 2);
-  player2 = new Ship(0, 30, 40, 20, [87, 83, 65, 68, 32, 81, 69, LEFT], p2IdleImg, 2, 2);
-  var startButton = new Button(250, 250, 150, 50, "Start Game", function () { menu.page = 1 }, color(130, 0, 180), color(180, 0, 255));
-  var singleButton = new Button(250, 250, 200, 50, "Single Player", function () { players = [player]; start(); }, color(130, 0, 180), color(180, 0, 255));
-  var twoButton = new Button(250, 375, 200, 50, "Split Screen", function () { players = [player, player2]; start(); }, color(130, 0, 180), color(180, 0, 255));
-  menu = new Menu("Cosmic Adventure", [[startButton], [singleButton, twoButton]]);
+  player2 = new Ship(0, 0, 40, 20, [UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW], p2IdleImg, 1, 2);
+  player = new Ship(0, 30, 40, 20, [87, 83, 65, 68, 32, 81, 69, LEFT], p1IdleImg, 2, 2);
+  let startButton = new Button(250, 250, 100, 50, "Start", function () { menu.page = 1 }, color(130, 0, 180), color(180, 0, 255));
+  let singlePlayer = new Button(250, 250, 200, 50, "One Player", function () { players = [player]; start(); }, color(130, 0, 180), color(180, 0, 255));
+  let twoPlayer = new Button(250, 375, 200, 50, "Two Player", function () { players = [player, player2]; start(); }, color(130, 0, 180), color(180, 0, 255));
+  menu = new Menu("Cosmic Adventure", [[startButton], [singlePlayer, twoPlayer]])
 }
 
 function start()
