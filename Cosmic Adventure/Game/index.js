@@ -94,9 +94,9 @@ function draw()
       player.draw(screenCanvas);
     }
 
-    for(var obstacle of obstacles)
+    for(var o of obstacles)
     {
-      obstacle.draw(screenCanvas);
+      o.draw(screenCanvas);
     }
     //finish.draw(screenCanvas);
 
