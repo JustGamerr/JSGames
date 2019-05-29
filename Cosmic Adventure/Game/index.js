@@ -2,18 +2,10 @@ var player;
 var player2;
 var players = [];
 var pickups = [];
-var canvas;
 var menu;
 var playing = false;
 var screens = [];
 var focus = {x: 0, y: 0};
-
-function centerScreen()
-{
-  var width = (windowWidth - 500) / 2;
-  var height = (windowHeight - 500) / 2;
-  canvas.position(width, height);
-}
 
 function setup()
 {
