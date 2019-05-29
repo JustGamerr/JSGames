@@ -52,15 +52,11 @@ function draw()
       player.move();
       player.shoot();
   }
-  particles = particles.filter((particle) => { return particle.duration > 0 })
-  for (var particle of particles) {
-      particle.move();
-  }
-  projectiles = projectiles.filter((projectile) => { return !projectile.collided });
-  for (var projectile of projectiles) {
-      projectile.move();
-      projectile.collide();
-  }
+  // projectiles = projectiles.filter((projectile) => { return !projectile.collided });
+  // for (var projectile of projectiles) {
+  //     projectile.move();
+  //     projectile.collide();
+  // }
   for (var screen of screens) {
       let c = screen.canvas;
       c.push();
