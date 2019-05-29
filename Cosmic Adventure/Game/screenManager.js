@@ -1,13 +1,13 @@
 class Screen
 {
-  constructor(x, y, w, h, screenFocus)
+  constructor(x, y, w, h, focus)
   {
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
 
-    this.screenFocus = screenFocus;
+    this.focus = focus;
     this.canvas = createGraphics(500, 500);
     this.canvas.rectMode(CENTER);
     this.canvas.imageMode(CENTER);
@@ -28,10 +28,10 @@ class Screen
 
 class GameMap extends Screen
 {
-  constructor(x, y, w, h, screenFocus, screenSizeW, screenSizeH)
+  constructor(x, y, w, h, focus, sizeX, sizeY)
   {
-    super(x, y, w, h, screenFocus);
-    this.canvas = createGraphics(screenSizeW, screenSizeH);
+    super(x, y, w, h, focus);
+    this.canvas = createGraphics(sizeX, sizeY);
     this.canvas.rectMode(CENTER);
     this.canvas.imageMode(CENTER);
   }
@@ -41,7 +41,7 @@ class GameMap extends Screen
     this.canvas.noFill(0);
     this.canvas.stroke(0);
     this.canvas.strokeWeight(20);
-    this.canvas.rect(this.screenSizeW / 2, this.screenSizeH / 2, this.screenSizeW, this.screenSizeH);
+    this.canvas.rect(this.sizeX / 2, this.sizeY / 2, this.sizeX, this.sizeY);
 
     this.canvas.noStroke();
     image(this.canvas, this.x, this.y, this.w, this.h);
