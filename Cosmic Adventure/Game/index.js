@@ -15,16 +15,16 @@ function setup()
   createCanvas(500, 500);
   player2 = new Ship(0, 0, 40, 20, [UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW], p2IdleImg, 1, 2);
   player = new Ship(0, 30, 40, 20, [87, 83, 65, 68, 32, 81, 69, LEFT], p1IdleImg, 2, 2);
-  let startButton = new Button(250, 250, 100, 50, "Start", function () { menu.page = 1 }, color(130, 0, 180), color(180, 0, 255));
-  let singlePlayer = new Button(250, 250, 200, 50, "One Player", function () { players = [player]; start(); }, color(130, 0, 180), color(180, 0, 255));
-  let twoPlayer = new Button(250, 375, 200, 50, "Two Player", function () { players = [player, player2]; start(); }, color(130, 0, 180), color(180, 0, 255));
+  let startButton = new Button(250, 250, 100, 50, "Start Game", function () { menu.page = 1 }, color(130, 0, 180), color(180, 0, 255));
+  let singlePlayer = new Button(250, 250, 200, 50, "Single Player", function () { players = [player]; start(); }, color(130, 0, 180), color(180, 0, 255));
+  let twoPlayer = new Button(250, 375, 200, 50, "Split Screen", function () { players = [player, player2]; start(); }, color(130, 0, 180), color(180, 0, 255));
   menu = new Menu("Cosmic Adventure", [[startButton], [singlePlayer, twoPlayer]])
 }
 
 function start()
 {
-  var rows = 1;
-  var columns = 1;
+  let rows = 1;
+  let columns = 1;
 
   background(0);
   playing = true;
@@ -65,7 +65,7 @@ function draw()
 
   for(var screen of screens)
   {
-    var screenCanvas = screen.canvas;
+    let screenCanvas = screen.canvas;
 
     screenCanvas.push();
     screenCanvas.translate(-screen.screenFocus.x + 250, -screen.screenFocus.y + 250);
@@ -95,7 +95,7 @@ function draw()
   }
 }
 
-function windowResized()
-{
-  centerScreen();
-}
+// function windowResized()
+// {
+//   centerScreen();
+// }

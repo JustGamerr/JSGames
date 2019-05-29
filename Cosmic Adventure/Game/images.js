@@ -7,6 +7,7 @@ var p2Img;
 var p2IdleImg;
 var p2FlameImg;
 var p2MovingImg;
+var shipImages = [];
 
 function preload()
 {
@@ -21,4 +22,6 @@ function preload()
   p2IdleImg = loadImage("http://cosmicadventure.xyz/game/resources/p2idle.png");
   p2FlameImg = loadImage("http://cosmicadventure.xyz/game/resources/p2fullflame.png");
   p2MovingImg = loadImage("http://cosmicadventure.xyz/game/resources/p2moving.gif");
+
+  shipImages = [p1Img, p1IdleImg, p1FlameImg, p1MovingImg, p2Img, p2IdleImg, p2FlameImg, p2MovingImg];
 }
