@@ -9,7 +9,7 @@ class Checkpoint extends Obstacle
     draw(c){
         c.push()
             c.translate(this.x, this.y);
-            c.rotate(this.dir);
+            c.rotate(this.direction);
             c.fill(200, 0, 0, 100);
             c.rect(0, 0, this.w, this.h);
             c.ellipse(0, 0, 10, 10);

@@ -168,12 +168,12 @@ function checkPositions() {
                     p1.faults++;
                     p1.x = p2.x;
                     p1.y = p2.y;
-                    p1.dir = p2.dir;
+                    p1.direction = p2.direction;
                 } else {
                     p2.faults++;
                     p2.x = p1.x;
                     p2.y = p1.y;
-                    p2.dir = p1.dir
+                    p2.direction = p1.direction
                 }
             }
         }

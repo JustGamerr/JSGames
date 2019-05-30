@@ -9,5 +9,5 @@ function drawHUD(canvas, p = player)
     canvas.text(p.place + "/" + players.length, 15, 480);
 
     canvas.text("Speed: " + Math.sqrt(p.vx * p.vx + p.vy * p.vy).toFixed(1), 120, 480);
-    canvas.text("W: Blaster", 300, 480)
+    canvas.text("Health: 100", 300, 480)
 }
