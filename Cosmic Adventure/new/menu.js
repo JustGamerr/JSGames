@@ -1,12 +1,12 @@
 class Menu
 {
-    constructor(title, pages, bc, tc)
+    constructor(title, pages, backgroundColor, textColor)
     {
         this.title = title;
         this.pages = pages;
         this.page = 0;
-        this.color = bc || color(0, 0, 0);
-        this.textColor = tc || color(255, 255, 255);
+        this.color = backgroundColor || color(0, 0, 0);
+        this.textColor = textColor || color(255, 255, 255);
     }
     draw()
     {
@@ -29,7 +29,7 @@ class Menu
 
 class Button
 {
-  constructor (x, y, width, height, text, action, baseColor, highlightColor)
+  constructor (x, y, width, height, text, action, color, hoverColor)
   {
     this.x = x;
     this.y = y;
@@ -37,8 +37,8 @@ class Button
     this.height = height;
     this.text = text;
     this.action = action;
-    this.baseColor = baseColor;
-    this.highlightColor = highlightColor;
+    this.color = color;
+    this.hoverColor = hoverColor;
   }
 
   mouseCollide()
@@ -58,7 +58,7 @@ class Button
   {
     if(this.mouseCollide())
     {
-      fill(this.highlightColor);
+      fill(this.hoverColor);
     }
     else
     {
