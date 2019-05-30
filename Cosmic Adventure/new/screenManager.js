@@ -11,7 +11,7 @@ class Screen{
         this.canvas.imageMode(CENTER);
         this.canvas.background(0);
     }
-    
+
     draw()
     {
         this.canvas.noFill(0);
@@ -22,7 +22,7 @@ class Screen{
         image(this.canvas, this.x, this.y, this.w, this.h);
     }
 }
-class MiniMap extends Screen
+class GameMap extends Screen
 {
     constructor(x, y, w, h, focus, sizeX, sizeY)
     {

@@ -47,11 +47,7 @@ function start()
     }
     if (players.length > 1 && players.length < 4)
     {
-        screens.push(new MiniMap(width * 0.75, height * 0.75, width / 2, height / 2, { x: -1250, y: -1500 }, 3000, 2000));
-    }
-    for (var i = 0; i < 10; i++)
-    {
-        players.push(new AIShip(-50, i * 25 - 100, 40, 20, shipImages[Math.floor(Math.random()*8)], 5 + i, i / 2 + 1));
+        screens.push(new GameMap(width * 0.75, height * 0.75, width / 2, height / 2, { x: -1250, y: -1500 }, 3000, 2000));
     }
 }
 
