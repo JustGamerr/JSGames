@@ -1,32 +1,32 @@
 class Obstacle
 {
-    constructor(x, y, w, h,  dir = 0, mass=10)
+    constructor(x, y, w, h,  direction = 0, mass=10)
     {
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
         this.mass = mass;
-        this.dir = dir;
+        this.direction = direction;
     }
 
-    draw(c)
+    draw(canvas)
     {
-        c.push()
-            c.translate(this.x,this.y);
-            c.rotate(this.dir);
-            c.fill(200);
-            c.rect(0, 0, this.w, this.h);
-        c.pop();
+        canvas.push()
+            canvas.translate(this.x,this.y);
+            canvas.rotate(this.direction);
+            canvas.fill(200);
+            canvas.rect(0, 0, this.w, this.h);
+        canvas.pop();
     }
 }
 
 var findCorners = function(obj)
 {
-    let corners = [  {x:obj.x - obj.w * cos(obj.dir) / 2 + obj.h * cos(obj.dir - PI / 2) / 2, y:obj.y - obj.h * sin(PI / 2 - obj.dir) / 2 - obj.w * sin(obj.dir) / 2},
-                     {x:obj.x + obj.w * cos(obj.dir) / 2 + obj.h * cos(obj.dir - PI / 2) / 2, y:obj.y - obj.h * sin(PI / 2 - obj.dir) / 2 + obj.w * sin(obj.dir) / 2},
-                     {x:obj.x + obj.w * cos(obj.dir) / 2 - obj.h * cos(obj.dir - PI / 2) / 2, y:obj.y + obj.h * sin(PI / 2 - obj.dir) / 2 + obj.w * sin(obj.dir) / 2},
-                     {x:obj.x - obj.w * cos(obj.dir) / 2 - obj.h * cos(obj.dir - PI / 2) / 2, y:obj.y + obj.h * sin(PI / 2 - obj.dir) / 2 - obj.w * sin(obj.dir) / 2}];
+    let corners = [  {x:obj.x - obj.w * cos(obj.direction) / 2 + obj.h * cos(obj.direction - PI / 2) / 2, y:obj.y - obj.h * sin(PI / 2 - obj.direction) / 2 - obj.w * sin(obj.direction) / 2},
+                     {x:obj.x + obj.w * cos(obj.direction) / 2 + obj.h * cos(obj.direction - PI / 2) / 2, y:obj.y - obj.h * sin(PI / 2 - obj.direction) / 2 + obj.w * sin(obj.direction) / 2},
+                     {x:obj.x + obj.w * cos(obj.direction) / 2 - obj.h * cos(obj.direction - PI / 2) / 2, y:obj.y + obj.h * sin(PI / 2 - obj.direction) / 2 + obj.w * sin(obj.direction) / 2},
+                     {x:obj.x - obj.w * cos(obj.direction) / 2 - obj.h * cos(obj.direction - PI / 2) / 2, y:obj.y + obj.h * sin(PI / 2 - obj.direction) / 2 - obj.w * sin(obj.direction) / 2}];
     // strokeWeight(10);
     // stroke(255,0,0);
     // for(var c of corners){

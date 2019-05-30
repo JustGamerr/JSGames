@@ -10,15 +10,15 @@ class Projectile
         this.color = color(255, 0, 0, 100);
         this.targets = [obstacles, [player2]];
         this.collided = false;
-        this.dir = 0;
+        this.direction = 0;
         this.w = this.size;
         this.h = this.size;
         this.mass = 5;
     }
-    draw(c)
+    draw(canvas)
     {
-        c.fill(this.color);
-        c.ellipse(this.x, this.y, this.size, this.size);
+        canvas.fill(this.color);
+        canvas.ellipse(this.x, this.y, this.size, this.size);
     }
     move()
     {
@@ -40,9 +40,9 @@ class Projectile
         }
     }
 
-    update(c)
+    update(canvas)
     {
-        this.draw(c);
+        this.draw(canvas);
         this.move();
         this.collide();
     }

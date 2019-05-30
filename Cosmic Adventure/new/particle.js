@@ -12,10 +12,10 @@ class Particle
         this.duration = 15;
     }
 
-    draw(c)
+    draw(canvas)
     {
-        c.fill(this.color);
-        c.ellipse(this.x, this.y, this.size, this.size);
+        canvas.fill(this.color);
+        canvas.ellipse(this.x, this.y, this.size, this.size);
     }
 
     move()
