@@ -16,8 +16,8 @@ function setup()
     noStroke();
     createCanvas(500, 500);
 
-    player2 = new Ship(0, 0, 40, 20, [UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW], shipImg3, 1, 2);
-    player = new Ship(0, 30, 40, 20, [87, 83, 65, 68, 32, 81, 69, LEFT], shipImg2, 2, 2);
+    player2 = new Ship(0, 0, 40, 20, [UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW], p2IdleImg, 1, 2);
+    player = new Ship(0, 30, 40, 20, [87, 83, 65, 68, 32, 81, 69, LEFT], p1IdleImg, 2, 2);
     players = [player2, player];
 
     let startButton = new Button(250, 250, 100, 50, "Start", function () { menu.page = 1 }, color(130, 0, 180), color(180, 0, 255));
@@ -80,7 +80,7 @@ function draw()
         let c = screen.canvas;
         c.push();
         c.translate(-screen.focus.x + 250, -screen.focus.y + 250)
-        
+
         c.push()
         c.translate(0, -750)
         c.image(starsImg, 0, 0, 3000, 2000)
