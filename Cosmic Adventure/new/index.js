@@ -108,10 +108,7 @@ function draw()
         }
 
         finish.draw(c);
-
-
         c.pop();
-        drawHUD(c);
     }
     for (var screen of screens)
     {

@@ -1,13 +1,13 @@
 class Ship
 {
-    constructor(x, y, w, h, controls, img, id = 1, spd = 1, dir = 0)
+    constructor(x, y, w, h, controls, img, id = 1, spd = 1, direction = 0)
     {
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
 
-        this.dir = dir;
+        this.direction = direction;
         this.vx = 0;
         this.vy = 0;
         this.spd = spd;
@@ -39,7 +39,7 @@ class Ship
     {
         target.push()
         target.translate(this.x, this.y);
-        target.rotate(this.dir);
+        target.rotate(this.direction);
         target.image(this.img, 0, 0, this.w, this.h);
         target.pop();
 
@@ -56,86 +56,66 @@ class Ship
         }
         this.turnSpeed *= 0.85;
 
-        if (this.placeFree(this.x, this.y, this.dir + this.turnSpeed) == true)
+        if (this.placeFree(this.x, this.y, this.direction + this.turnSpeed) == true)
         {
-            this.dir += this.turnSpeed;
+            this.direction += this.turnSpeed;
         } else {
             this.turnSpeed = 0;
         }
 
         if (register[this.up])
         {
-            this.vx += this.thrust * cos(this.dir);
-            this.vy += this.thrust * sin(this.dir);
-            particles.push(new ThrustParticle(this.x - cos(this.dir) * this.w * 0.3, this.y - sin(this.dir) * this.h * 0.3, -this.vx / 2, -this.vy / 2));
+            this.vx += this.thrust * cos(this.direction);
+            this.vy += this.thrust * sin(this.direction);
+            particles.push(new ThrustParticle(this.x - cos(this.direction) * this.w * 0.3, this.y - sin(this.direction) * this.h * 0.3, -this.vx / 2, -this.vy / 2));
         }
         if (register[this.down])
         {
-            this.vx -= this.thrust * cos(this.dir) / 2;
-            this.vy -= this.thrust * sin(this.dir) / 2;
-            particles.push(new ThrustParticle(this.x - cos(this.dir) * this.w * 0.3, this.y - sin(this.dir) * this.h * 0.3, this.vx * 1.5, this.vy * 1.5));
+            this.vx -= this.thrust * cos(this.direction) / 2;
+            this.vy -= this.thrust * sin(this.direction) / 2;
+            particles.push(new ThrustParticle(this.x - cos(this.direction) * this.w * 0.3, this.y - sin(this.direction) * this.h * 0.3, this.vx * 1.5, this.vy * 1.5));
         }
         if (register[this.boost])
          {
-            this.vx += this.thrust * cos(this.dir) * this.boostFactor;
-            this.vy += this.thrust * sin(this.dir) * this.boostFactor;
+            this.vx += this.thrust * cos(this.direction) * this.boostFactor;
+            this.vy += this.thrust * sin(this.direction) * this.boostFactor;
             for (var i = 1; i < 20; i += 4)
             {
-                particles.push(new BoostParticle(this.x - cos(this.dir) * this.w * 0.3, this.y - sin(this.dir) * this.h * 0.3, -this.vx / i, -this.vy / i));
+                particles.push(new BoostParticle(this.x - cos(this.direction) * this.w * 0.3, this.y - sin(this.direction) * this.h * 0.3, -this.vx / i, -this.vy / i));
             }
             register[this.boost] = false;
         }
         if (register[this.strafeLeft])
         {
-            this.vx += this.thrust * cos(this.dir - PI / 2) * this.boostFactor;
-            this.vy += this.thrust * sin(this.dir - PI / 2) * this.boostFactor;
+            this.vx += this.thrust * cos(this.direction - PI / 2) * this.boostFactor;
+            this.vy += this.thrust * sin(this.direction - PI / 2) * this.boostFactor;
             for (var i = 1; i < 20; i += 4)
             {
-                particles.push(new BoostParticle(this.x - cos(this.dir) * this.w * 0.3, this.y - sin(this.dir) * this.h * 0.3, -this.vx / i, -this.vy / i));
+                particles.push(new BoostParticle(this.x - cos(this.direction) * this.w * 0.3, this.y - sin(this.direction) * this.h * 0.3, -this.vx / i, -this.vy / i));
             }
             register[this.strafeLeft] = false;
         }
         if (register[this.strafeRight])
         {
-            this.vx += this.thrust * cos(this.dir + PI / 2) * this.boostFactor;
-            this.vy += this.thrust * sin(this.dir + PI / 2) * this.boostFactor;
+            this.vx += this.thrust * cos(this.direction + PI / 2) * this.boostFactor;
+            this.vy += this.thrust * sin(this.direction + PI / 2) * this.boostFactor;
             for (var i = 1; i < 20; i += 4)
             {
-                particles.push(new BoostParticle(this.x - cos(this.dir) * this.w * 0.3, this.y - sin(this.dir) * this.h * 0.3, -this.vx / i, -this.vy / i));
+                particles.push(new BoostParticle(this.x - cos(this.direction) * this.w * 0.3, this.y - sin(this.direction) * this.h * 0.3, -this.vx / i, -this.vy / i));
             }
             register[this.strafeRight] = false;
         }
 
         this.vx *= 0.95;
         this.vy *= 0.95;
-        if (this.placeFree(this.x + this.vx, this.y + this.vy, this.dir)== true)
+        if (this.placeFree(this.x + this.vx, this.y + this.vy, this.direction)== true)
         {
             this.x += this.vx;
             this.y += this.vy;
         } else {
-            let o = this.placeFree(this.x + this.vx, this.y + this.vy, this.dir)
+            let o = this.placeFree(this.x + this.vx, this.y + this.vy, this.direction)
             this.vx = (this.x-o.x)/abs(this.x-o.x)*abs(this.vx)/5;
             this.vy = (this.y-o.y)/abs(this.y-o.y)*abs(this.vy)/5;
-        }
-
-        for (var c of checkpoints) {
-            if (rotatedRectangularCollision(this, c)) {
-                if(!c.players[this.id]){
-                    c.players[this.id] = true;
-                    this.nextCheckpoint++;
-                }
-            }
-        }
-
-        if (rotatedRectangularCollision(this, finish)) {
-            for (var c of checkpoints) {
-                if (!c.players[this.id]) {
-                    return;
-                }
-                c.players[this.id] = false;
-            }
-            this.lap++;
-            console.log(this.lap);
         }
     }
 
@@ -143,21 +123,21 @@ class Ship
         if (register[this.shootButton]) {
             //register[this.shootButton]=false;
             if (this.shootDelay <= 0) {
-                projectiles.push(new Projectile(this.x, this.y, cos(this.dir) * 15 * this.thrust + this.vx, sin(this.dir) * 15 * this.thrust + this.vy));
+                projectiles.push(new Projectile(this.x, this.y, cos(this.direction) * 15 * this.thrust + this.vx, sin(this.direction) * 15 * this.thrust + this.vy));
                 this.shootDelay = this.shootTime;
             }
         }
         this.shootDelay--;
     }
 
-    update(c) {
+    update(canvas) {
         this.move();
-        this.draw(c);
+        this.draw(canvas);
         this.shoot();
     }
 
-    placeFree(x, y, dir) {
-        var temp = { x: x, y: y, dir: dir, w: this.w, h: this.h }
+    placeFree(x, y, direction) {
+        var temp = { x: x, y: y, direction: direction, w: this.w, h: this.h }
         for (var o of obstacles) {
             if (rotatedRectangularCollision(temp, o)) {
                 return o;
