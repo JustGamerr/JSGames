@@ -1,6 +1,6 @@
 class Ship
 {
-    constructor(x, y, w, h, controls, img, id = 1, spd = 1, direction = 0)
+    constructor(x, y, w, h, controls, img, id = 1, speed = 1, direction = 0)
     {
         this.x = x;
         this.y = y;
@@ -10,8 +10,8 @@ class Ship
         this.direction = direction;
         this.vx = 0;
         this.vy = 0;
-        this.spd = spd;
-        this.thrust = 0.3 * spd;
+        this.speed = speed;
+        this.thrust = 0.3 * speed;
         this.boostFactor = 15;
         this.maxV = 1;
         this.turnSpeed = 0
