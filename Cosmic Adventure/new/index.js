@@ -20,7 +20,7 @@ function setup()
     player = new Ship(0, 30, 40, 20, [87, 83, 65, 68, 32, 81, 69, LEFT], p1IdleImg, 2, 2, 100);
     players = [player2, player];
 
-    let startButton = new Button(250, 250, 100, 50, "Start Game", function () { menu.page = 1 }, color(130, 0, 180), color(180, 0, 255));
+    let startButton = new Button(250, 250, 150, 50, "Start Game", function () { menu.page = 1 }, color(130, 0, 180), color(180, 0, 255));
     let singlePlayer = new Button(250, 250, 200, 50, "Single Player", function () { players = [player]; start(); }, color(130, 0, 180), color(180, 0, 255));
     let twoPlayer = new Button(250, 375, 200, 50, "Split Screen", function () { players = [player, player2]; start(); }, color(130, 0, 180), color(180, 0, 255));
 

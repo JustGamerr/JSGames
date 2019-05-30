@@ -13,8 +13,8 @@ class Menu
         background(this.color);
         fill(this.textColor);
         textAlign(CENTER);
-        textSize(64)
-        text(this.title, 250, 100)
+        textSize(56);
+        text(this.title, 250, 100);
         for(var button of this.pages[this.page])
         {
             button.draw();
