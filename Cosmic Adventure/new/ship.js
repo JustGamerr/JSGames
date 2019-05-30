@@ -1,6 +1,6 @@
 class Ship
 {
-    constructor(x, y, w, h, controls, img, id = 1, speed = 1, direction = 0)
+    constructor(x, y, w, h, controls, img, id = 1, speed = 1, direction = 0, health)
     {
         this.x = x;
         this.y = y;
@@ -32,7 +32,7 @@ class Ship
         this.img = img;
         this.shootTime = 20;
         this.place = 1;
-        this.nextCheckpoint = 0;
+        this.health = health;
     }
 
     draw(target)
