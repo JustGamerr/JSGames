@@ -1,21 +1,23 @@
 var register = {};
 
-function keyPressed(){
+function keyPressed()
+{
     register[keyCode] = true;
 }
 
-function keyReleased(){
+function keyReleased()
+{
     register[keyCode] = false;
 }
 
-function mousePressed(){
+function mousePressed()
+{
     register[mouseButton] = true;
 }
 
-function mouseReleased(){
+function mouseReleased()
+{
     register[mouseButton] = false;
 }
 
-
-//Prevent arrow keys scrolling the page
 window.addEventListener('contextmenu', event => event.preventDefault());

@@ -1,5 +1,7 @@
-class Ship {
-    constructor(x, y, w, h, controls, img, id = 1, spd = 1, dir = 0) {
+class Ship
+{
+    constructor(x, y, w, h, controls, img, id = 1, spd = 1, dir = 0)
+    {
         this.x = x;
         this.y = y;
         this.w = w;
@@ -33,7 +35,8 @@ class Ship {
         this.nextCheckpoint = 0;
     }
 
-    draw(target) {
+    draw(target)
+    {
         target.push()
         target.translate(this.x, this.y);
         target.rotate(this.dir);
@@ -43,50 +46,61 @@ class Ship {
     }
 
     move() {
-        if (register[this.right]) {
+        if (register[this.right])
+        {
             this.turnSpeed += this.turnThrust;
         }
-        if (register[this.left]) {
+        if (register[this.left])
+        {
             this.turnSpeed -= this.turnThrust;
         }
         this.turnSpeed *= 0.85;
 
-        if (this.placeFree(this.x, this.y, this.dir + this.turnSpeed) == true) {
+        if (this.placeFree(this.x, this.y, this.dir + this.turnSpeed) == true)
+        {
             this.dir += this.turnSpeed;
         } else {
             this.turnSpeed = 0;
         }
 
-        if (register[this.up]) {
+        if (register[this.up])
+        {
             this.vx += this.thrust * cos(this.dir);
             this.vy += this.thrust * sin(this.dir);
             particles.push(new ThrustParticle(this.x - cos(this.dir) * this.w * 0.3, this.y - sin(this.dir) * this.h * 0.3, -this.vx / 2, -this.vy / 2));
         }
-        if (register[this.down]) {
+        if (register[this.down])
+        {
             this.vx -= this.thrust * cos(this.dir) / 2;
             this.vy -= this.thrust * sin(this.dir) / 2;
             particles.push(new ThrustParticle(this.x - cos(this.dir) * this.w * 0.3, this.y - sin(this.dir) * this.h * 0.3, this.vx * 1.5, this.vy * 1.5));
         }
-        if (register[this.boost]) {
+        if (register[this.boost])
+         {
             this.vx += this.thrust * cos(this.dir) * this.boostFactor;
             this.vy += this.thrust * sin(this.dir) * this.boostFactor;
-            for (var i = 1; i < 20; i += 4) {
+            for (var i = 1; i < 20; i += 4)
+            {
                 particles.push(new BoostParticle(this.x - cos(this.dir) * this.w * 0.3, this.y - sin(this.dir) * this.h * 0.3, -this.vx / i, -this.vy / i));
             }
             register[this.boost] = false;
         }
-        if (register[this.strafeLeft]) {
+        if (register[this.strafeLeft])
+        {
             this.vx += this.thrust * cos(this.dir - PI / 2) * this.boostFactor;
             this.vy += this.thrust * sin(this.dir - PI / 2) * this.boostFactor;
-            for (var i = 1; i < 20; i += 4) {
+            for (var i = 1; i < 20; i += 4)
+            {
                 particles.push(new BoostParticle(this.x - cos(this.dir) * this.w * 0.3, this.y - sin(this.dir) * this.h * 0.3, -this.vx / i, -this.vy / i));
             }
             register[this.strafeLeft] = false;
         }
-        if (register[this.strafeRight]) {
+        if (register[this.strafeRight])
+        {
             this.vx += this.thrust * cos(this.dir + PI / 2) * this.boostFactor;
             this.vy += this.thrust * sin(this.dir + PI / 2) * this.boostFactor;
-            for (var i = 1; i < 20; i += 4) {
+            for (var i = 1; i < 20; i += 4)
+            {
                 particles.push(new BoostParticle(this.x - cos(this.dir) * this.w * 0.3, this.y - sin(this.dir) * this.h * 0.3, -this.vx / i, -this.vy / i));
             }
             register[this.strafeRight] = false;
@@ -94,11 +108,12 @@ class Ship {
 
         this.vx *= 0.95;
         this.vy *= 0.95;
-        if (this.placeFree(this.x + this.vx, this.y+this.vy, this.dir)== true) {
+        if (this.placeFree(this.x + this.vx, this.y + this.vy, this.dir)== true)
+        {
             this.x += this.vx;
             this.y += this.vy;
         } else {
-            let o = this.placeFree(this.x + this.vx, this.y+this.vy, this.dir)
+            let o = this.placeFree(this.x + this.vx, this.y + this.vy, this.dir)
             this.vx = (this.x-o.x)/abs(this.x-o.x)*abs(this.vx)/5;
             this.vy = (this.y-o.y)/abs(this.y-o.y)*abs(this.vy)/5;
         }
@@ -109,7 +124,6 @@ class Ship {
                     c.players[this.id] = true;
                     this.nextCheckpoint++;
                 }
-                
             }
         }
 
@@ -123,7 +137,6 @@ class Ship {
             this.lap++;
             console.log(this.lap);
         }
-
     }
 
     shoot() {
@@ -153,13 +166,6 @@ class Ship {
         return true;
     }
 }
-
-
-/********************************************************************/
-
-
-/********************************************************************/
-
 
 class AIShip extends Ship {
     constructor(x, y, w, h, img, id = 1, spd = 1, dir = 0) {

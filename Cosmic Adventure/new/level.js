@@ -1,4 +1,5 @@
-var obstacles = [
+var obstacles =
+[
     new Obstacle(-250, -250, 1500, 100),
     new Obstacle(0, 250, 3100, 100),
     new Obstacle(1500, -750, 100, 2100),
@@ -20,10 +21,10 @@ var obstacles = [
     // new Obstacle(250, -1200, 150, 150),
     // new Obstacle(700, -1300, 225, 225),
     // new Obstacle(1300, -1200, 450, 150)
-]
+];
 
-var checkpoints = [
-
+var checkpoints =
+[
     new Checkpoint(600, -250, 250, 10),
     new Checkpoint(750, -600, 10, 250),
     new Checkpoint(900, -250, 250, 10),

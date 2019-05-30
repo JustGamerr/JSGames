@@ -9,47 +9,56 @@ var screens = [];
 var playing = false;
 var menu;
 
-
-function setup() {
-
+function setup()
+{
     rectMode(CENTER);
     imageMode(CENTER);
     noStroke();
     createCanvas(500, 500);
+
     player2 = new Ship(0, 0, 40, 20, [UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW], shipImg3, 1, 2);
     player = new Ship(0, 30, 40, 20, [87, 83, 65, 68, 32, 81, 69, LEFT], shipImg2, 2, 2);
     players = [player2, player];
+
     let startButton = new Button(250, 250, 100, 50, "Start", function () { menu.page = 1 }, color(130, 0, 180), color(180, 0, 255));
     let singlePlayer = new Button(250, 250, 200, 50, "One Player", function () { players = [player]; start(); }, color(130, 0, 180), color(180, 0, 255));
     let twoPlayer = new Button(250, 375, 200, 50, "Two Player", function () { players = [player, player2]; start(); }, color(130, 0, 180), color(180, 0, 255));
+
     menu = new Menu("Space Game", [[startButton], [singlePlayer, twoPlayer]])
     setInterval(positionRanking,500)
 }
 
-function start() {
+function start()
+{
     background(0)
     playing = true;
     let rows = 1;
     let cols = 1;
-    if (players.length > 1) {
+    if (players.length > 1)
+    {
         cols = 2;
         rows = 2;
     }
 
-    for (var i = 0; i < players.length; i++) {
+    for (var i = 0; i < players.length; i++)
+    {
 
         screens.push(new Screen((width / 2 + i % 2 * width) / cols, (height / 2 + floor(i / 2) * height) / rows, width / cols, height / rows, players[i]));
     }
-    if (players.length > 1 && players.length < 4) {
+    if (players.length > 1 && players.length < 4)
+    {
         screens.push(new MiniMap(width * 0.75, height * 0.75, width / 2, height / 2, { x: -1250, y: -1500 }, 3000, 2000));
     }
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 10; i++)
+    {
         players.push(new AIShip(-50, i * 25 - 100, 40, 20, shipImages[Math.floor(Math.random()*8)], 5 + i, i / 2 + 1));
     }
 }
 
-function draw() {
-    if (!playing) {
+function draw()
+{
+    if (!playing)
+    {
         menu.draw();
         return;
     }
@@ -61,20 +70,24 @@ function draw() {
     // }
     // focus.x /= players.length;
     // focus.y /= players.length;
-    for (var player of players) {
+    for (var player of players)
+    {
         player.move();
         player.shoot();
     }
     particles = particles.filter((particle) => { return particle.duration > 0 })
-    for (var particle of particles) {
+    for (var particle of particles)
+    {
         particle.move();
     }
     projectiles = projectiles.filter((projectile) => { return !projectile.collided });
-    for (var projectile of projectiles) {
+    for (var projectile of projectiles)
+    {
         projectile.move();
         projectile.collide();
     }
-    for (var screen of screens) {
+    for (var screen of screens)
+    {
         let c = screen.canvas;
         c.push();
         c.translate(-screen.focus.x + 250, -screen.focus.y + 250)
@@ -85,17 +98,20 @@ function draw() {
         c.pop()
 
 
-        for (var p of particles) {
+        for (var p of particles)
+        {
             p.draw(c);
         }
 
 
-        for (var p of projectiles) {
+        for (var p of projectiles)
+        {
             p.draw(c);
         }
 
         //background(0);
-        for (var p of players) {
+        for (var p of players)
+        {
             p.draw(c);
             // for(var p2 of players.filter((player)=>{return player!=p})){
             //     if(rotatedRectangularCollision(p,p2)){
@@ -106,13 +122,15 @@ function draw() {
         //checkPositions();
 
         //console.log(findCorners(player));
-        for (var o of obstacles) {
+        for (var o of obstacles)
+        {
             o.draw(c);
         }
 
 
 
-        for (var ch of checkpoints) {
+        for (var ch of checkpoints)
+        {
             ch.draw(c);
         }
         finish.draw(c);
@@ -121,13 +139,13 @@ function draw() {
         c.pop();
         drawHUD(c);
     }
-    for (var screen of screens) {
+    for (var screen of screens)
+    {
         fill(255, 0, 0)
         screen.draw();
     }
     //positionRanking();
 }
-
 
 function checkPositions() {
     let nextCheckpoint = 0

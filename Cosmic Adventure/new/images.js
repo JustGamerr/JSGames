@@ -8,6 +8,7 @@ var shipImg6;
 var shipImg7;
 var shipImg8;
 var shipImages;
+
 function preload(){
     shipImg = loadImage("//d14nx13ylsx7x8.cloudfront.net/repo_assets/assets/000/031/281/original/ship.png");
     starsImg = loadImage("//d14nx13ylsx7x8.cloudfront.net/repo_assets/assets/000/031/479/original/stars2.jpg");
