@@ -5,9 +5,9 @@ function drawHUD(canvas, player)
 
     canvas.fill(0);
     canvas.textSize(32);
-    canvas.textFont("Georgia")
+    canvas.textFont("Comic Sans")
     canvas.text(player.place + "/" + players.length, 15, 480);
 
     canvas.text("Speed: " + Math.sqrt(player.vx * player.vx + player.vy * player.vy).toFixed(1), 120, 480);
-    canvas.text("Health: 100", 300, 480)
+    canvas.text("Health: " + player.health, 300, 480)
 }

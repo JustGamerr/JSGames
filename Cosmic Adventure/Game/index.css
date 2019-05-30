@@ -1,4 +1,5 @@
-body{
+body
+{
   height: cover;
   background: linear-gradient(to top right, #ff5050 20%, #0099ff 80%);
 }

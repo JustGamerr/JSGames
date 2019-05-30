@@ -9,7 +9,8 @@ var p2FlameImg;
 var p2MovingImg;
 var shipImages = [];
 
-function preload(){
+function preload()
+{
   bkgImage = loadImage("http://cosmicadventure.xyz/game/resources/bkgImage.jpg");
 
   p1Img = loadImage("http://cosmicadventure.xyz/game/resources/p1full.gif");
