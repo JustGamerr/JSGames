@@ -116,12 +116,12 @@ class Text
 
   draw()
   {
-    if(this.display)
-    {
+  //  if(this.display)
+  //  {
       fill(this.textColor);
-      textSize(this.size);
+      textSize(this.textSize);
       textAlign(CENTER);
       text(this.text, this.x, this.y);
-    }
+  //  }
   }
 }
