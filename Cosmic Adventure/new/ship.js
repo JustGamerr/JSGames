@@ -33,6 +33,7 @@ class Ship
     this.img = img;
     this.shootTime = 20;
     this.place = 1;
+
     this.health = health;
   }
 
