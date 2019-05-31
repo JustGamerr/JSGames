@@ -8,5 +8,5 @@ function drawHUD(canvas, p)
   canvas.textFont("Comic Sans")
 
   canvas.text("Speed: " + Math.sqrt(p.vx * p.vx + p.vy * p.vy).toFixed(1), 50, 480);
-  canvas.text("Health: " + p.health, 200, 480);
+  canvas.text("Health: " + p.health, 250, 480);
 }
