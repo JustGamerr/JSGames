@@ -88,7 +88,7 @@ class Image
     this.height = height;
     this.image = image;
     this.display = false;
-  }      target.image(this.img, 0, 0, this.w, this.h);
+  }
 
 
   draw()
