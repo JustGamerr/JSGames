@@ -50,7 +50,7 @@ function setup()
 
     let unpauseButton = new Button(250, 400, 300, 50, "Return to Game", function () { paused = false; playing = true; }, color(130, 0, 180, 180, 0, 255));
 
-    menu = new Menu("Cosmic Adventure", [[startButton, tutorialButton, aboutButton], [singlePlayer, splitButton, backButton], [backButton], [backButton]]);
+    menu = new Menu("Cosmic Adventure", [[startButton, tutorialButton, aboutButton], [singlePlayer, splitButton, backButton], [backButton, aboutText], [backButton]]);
     pausedMenu = new Menu("Paused", [unpauseButton, backButton]);
 }
 
