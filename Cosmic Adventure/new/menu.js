@@ -100,28 +100,28 @@ class Button
 //   }
 // }
 //
-// class Text
-// {
-//   constructor(x, y, size, color, text)
-//   {
-//     this.x = x;
-//     this.y = y;
-//
-//     this.textSize = size;
-//     this.textColor = color;
-//     this.text = text;
-//
-//     this.display = false;
-//   }
-//
-//   draw()
-//   {
-//     if(this.display)
-//     {
-//       fill(this.textColor);
-//       textSize(this.size);
-//       textAlign(CENTER);
-//       text(this.text, this.x, this.y);
-//     }
-//   }
-// }
+class Text
+{
+  constructor(x, y, size, color, text)
+  {
+    this.x = x;
+    this.y = y;
+
+    this.textSize = size;
+    this.textColor = color;
+    this.text = text;
+
+    this.display = false;
+  }
+
+  draw()
+  {
+    if(this.display)
+    {
+      fill(this.textColor);
+      textSize(this.size);
+      textAlign(CENTER);
+      text(this.text, this.x, this.y);
+    }
+  }
+}
