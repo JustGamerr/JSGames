@@ -29,7 +29,7 @@ function setup()
     centerScreen();
     canvas.parent('cosmic-game-holder');
 
-    player2 = new Ship(0, 0, 40, 20, [UP_ARROW, DOWN_ARROW, null, null, 16, LEFT_ARROW, RIGHT_ARROW, 18], p2Img, 1, 2, 100);
+    player2 = new Ship(0, 0, 40, 20, [UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16, 222, 13, 18], p2Img, 1, 2, 100);
     player = new Ship(0, 30, 40, 20, [87, 83, 65, 68, 32, 81, 69, LEFT], p1Img, 2, 2, 100);
     players = [player2, player];
 
@@ -42,15 +42,15 @@ function setup()
     let singlePlayer = new Button(250, 200, 200, 50, "Single Player", function () { players = [player]; start(); }, color(130, 0, 180), color(180, 0, 255));
     let splitButton = new Button(250, 300, 200, 50, "Split Screen", function () { players = [player, player2]; start(); }, color(130, 0, 180), color(180, 0, 255));
     //
-    // let tutorialP1Image = new Image(100, 200, 100, 50, p1Img);
-    // let tutorialP2Image = new Image(350, 200, 100, 50, p2Img);
+    let tutorialP1Image = new Image(100, 200, 100, 50, p1Img);
+    let tutorialP2Image = new Image(350, 200, 100, 50, p2Img);
 
     let backButton = new Button(250, 400, 300, 50, "Back to Main Menu", function () { menu.page = 0; }, color(130, 0, 180), color(180, 0, 255));
     let exitButton = new Button(250, 400, 300, 50, "Exit to Main Menu", function() { menu.page = 0; playing = false; paused = false; }, color(130, 0, 180), color(180, 0, 255));
 
     let unpauseButton = new Button(250, 400, 300, 50, "Return to Game", function () { paused = false; playing = true; }, color(130, 0, 180, 180, 0, 255));
 
-    menu = new Menu("Cosmic Adventure", [[startButton, tutorialButton, aboutButton], [singlePlayer, splitButton, backButton], [backButton], [backButton]]);
+    menu = new Menu("Cosmic Adventure", [[startButton, tutorialButton, aboutButton], [singlePlayer, splitButton, backButton], [backButton, tutorialP1Image, tutorialP2Image], [backButton]]);
     pausedMenu = new Menu("Paused", [unpauseButton, backButton]);
 }
 
