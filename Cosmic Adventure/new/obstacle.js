@@ -88,7 +88,7 @@ var rotatedRectangularCollision = function(obj1, obj2)
         dot1.sort(function(a, b) { return a - b })
         dot2.sort(function(a, b) { return a - b })
 
-        if(dot1[0]<dot2[3] && dot1[3] > dot2[0])
+        if(dot1[0] < dot2[3] && dot1[3] > dot2[0])
         {
             // successful check: continue
         } else {

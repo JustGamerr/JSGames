@@ -1,51 +1,51 @@
 class Projectile
 {
-    constructor(x, y, vx, vy)
+  constructor(x, y, vx, vy)
+  {
+    this.x = x;
+    this.y = y;
+    this.vx = vx;
+    this.vy = vy;
+    this.size = 15;
+    this.color = color(255, 0, 0, 100);
+    this.targets = [obstacles, [player2]];
+    this.collided = false;
+    this.direction = 0;
+    this.w = this.size;
+    this.h = this.size;
+    this.mass = 5;
+  }
+  draw(canvas)
+  {
+    canvas.fill(this.color);
+    canvas.ellipse(this.x, this.y, this.size, this.size);
+  }
+  move()
+  {
+    this.x += this.vx;
+    this.y += this.vy;
+  }
+  collide()
+  {
+    for (var list of this.targets)
     {
-        this.x = x;
-        this.y = y;
-        this.vx = vx;
-        this.vy = vy;
-        this.size = 15;
-        this.color = color(255, 0, 0, 100);
-        this.targets = [obstacles, [player2]];
-        this.collided = false;
-        this.direction = 0;
-        this.w = this.size;
-        this.h = this.size;
-        this.mass = 5;
-    }
-    draw(canvas)
-    {
-        canvas.fill(this.color);
-        canvas.ellipse(this.x, this.y, this.size, this.size);
-    }
-    move()
-    {
-        this.x += this.vx;
-        this.y += this.vy;
-    }
-    collide()
-    {
-        for (var list of this.targets)
+      for (var t of list) {
+        if (rotatedRectangularCollision(this, t))
         {
-            for (var t of list) {
-                if (rotatedRectangularCollision(this, t))
-                {
-                    this.collided = true;
-                    momentum(this, t);
-                    particles.push(new BoomParticle(this.x, this.y,0,0))
-                }
-            }
+          this.collided = true;
+          momentum(this, t);
+          particles.push(new BoomParticle(this.x, this.y,0,0))
         }
+      }
     }
+  }
 
-    update(canvas)
-    {
-        this.draw(canvas);
-        this.move();
-        this.collide();
-    }
+  update(canvas)
+  {
+    this.draw(canvas);
+    this.move();
+    this.collide();
+  }
 }
 
 function momentum(obj1, obj2)

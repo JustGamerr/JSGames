@@ -1,4 +1,4 @@
-var bkgImg;
+var bkgImage;
 var p1Img;
 var p1IdleImg;
 var p1FlameImg;
