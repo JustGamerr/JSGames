@@ -32,6 +32,8 @@ class Projectile
       for (var t of list) {
         if (rotatedRectangularCollision(this, t))
         {
+          if(t == player2)
+            player2.health -= 25;
           this.collided = true;
           momentum(this, t);
           particles.push(new BoomParticle(this.x, this.y,0,0))

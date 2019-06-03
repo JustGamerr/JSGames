@@ -1,6 +1,6 @@
 class Ship
 {
-  constructor(x, y, w, h, controls, img, id = 1, speed = 1, direction = 0, health)
+  constructor(x, y, w, h, controls, img, id = 1, speed = 1, direction = 0, health, shipNum)
   {
     this.x = x;
     this.y = y;
@@ -19,6 +19,7 @@ class Ship
 
     this.mass = 5;
     this.id = id;
+    this.shipNum = shipNum;
 
     this.up = controls[0];
     this.down = controls[1];
@@ -69,13 +70,23 @@ class Ship
     {
       this.vx += this.thrust * cos(this.direction);
       this.vy += this.thrust * sin(this.direction);
-      particles.push(new ThrustParticle(this.x - cos(this.direction) * this.w * 0.3, this.y - sin(this.direction) * this.h * 0.3, -this.vx / 2, -this.vy / 2));
+      if(this.shipNum == 2) {
+        particles.push(new ThrustParticle(this.x - cos(this.direction) * this.w * 0.3, this.y - sin(this.direction) * this.h * 0.3, -this.vx / 2, -this.vy / 2), color(255, 0, 0, 155));
+
+      } else {
+        particles.push(new ThrustParticle(this.x - cos(this.direction) * this.w * 0.3, this.y - sin(this.direction) * this.h * 0.3, -this.vx / 2, -this.vy / 2, color(0, 150, 255, 155)));
+      }
     }
     if (register[this.down])
     {
       this.vx -= this.thrust * cos(this.direction) / 2;
       this.vy -= this.thrust * sin(this.direction) / 2;
-      particles.push(new ThrustParticle(this.x - cos(this.direction) * this.w * 0.3, this.y - sin(this.direction) * this.h * 0.3, this.vx * 1.5, this.vy * 1.5));
+      if(this.shipNum == 2) {
+        particles.push(new ThrustParticle(this.x - cos(this.direction) * this.w * 0.3, this.y - sin(this.direction) * this.h * 0.3, -this.vx / 2, -this.vy / 2), color(255, 0, 0, 155));
+
+      } else {
+        particles.push(new ThrustParticle(this.x - cos(this.direction) * this.w * 0.3, this.y - sin(this.direction) * this.h * 0.3, -this.vx / 2, -this.vy / 2, color(0, 150, 255, 155)));
+      }
     }
     if (register[this.boost])
      {

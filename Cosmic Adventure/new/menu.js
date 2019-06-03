@@ -1,12 +1,13 @@
 class Menu
 {
-  constructor(title, pages, backgroundColor, textColor)
+  constructor(text, pages, backgroundColor, textColor)
   {
-    this.title = title;
+    this.text = text;
     this.pages = pages;
     this.page = 0;
     this.color = backgroundColor || color(0, 0, 0);
     this.textColor = textColor || color(0, 191, 255);
+    this.objectsNum = 0;
   }
   draw()
   {
@@ -16,12 +17,31 @@ class Menu
     fill(this.textColor);
     textAlign(CENTER);
     textSize(56);
-    text(this.title, 250, 125);
+    text(this.text, 250, 100);
 
     for(var button of this.pages[this.page])
     {
-      button.draw();
+      if(button.text == "Version: 1.4.6")
+      {
+        button.draw();
+        continue;
+      }
+      if(menu.page > 1)
+        if(button.text != "Back to Main Menu")
+        {
+          button.draw();
+          continue;
+        } else {
+          button.draw();
+          if(register[LEFT] && button.mouseCollide())
+          {
+            button.action();
+            register[LEFT] = false;
+            continue;
+          }
+        }
 
+      button.draw();
       if(register[LEFT] && button.mouseCollide())
       {
         button.action();
@@ -80,26 +100,22 @@ class Button
 
 // class Image
 // {
-//   constructor(x, y, width, height, image)
+//   constructor(x, y, width, height, image, display)
 //   {
 //     this.x = x;
 //     this.y = y;
 //     this.width = width;
 //     this.height = height;
 //     this.image = image;
-//     this.display = false;
+//     this.display = display;
 //   }
-//
 //
 //   draw()
 //   {
-//     if(this.display)
-//     {
-//       image(this.image, this.x, this.y, this.width, this.height);
-//     }
+//     //image(this.image, this.x, this.y, this.width, this.height);
 //   }
 // }
-//
+
 class Text
 {
   constructor(x, y, size, color, text)

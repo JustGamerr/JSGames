@@ -21,6 +21,10 @@ class Screen{
     this.canvas.noStroke();
     image(this.canvas, this.x, this.y, this.w, this.h);
   }
+  clear()
+  {
+    this.canvas.clear();
+  }
 }
 class GameMap extends Screen
 {
@@ -40,5 +44,10 @@ class GameMap extends Screen
     this.canvas.rect(this.sizeX / 2, this.sizeY / 2, this.sizeX, this.sizeY);
     this.canvas.noStroke();
     image(this.canvas, this.x, this.y, this.w, this.h);
+  }
+
+  clear()
+  {
+    this.canvas.clear();
   }
 }

@@ -30,10 +30,10 @@ class Particle
 
 class ThrustParticle extends Particle
 {
-  constructor(x, y, vx, vy)
+  constructor(x, y, vx, vy, thrustColor)
   {
     super(x, y, vx, vy);
-    this.color = color(0, 150, 255, 155);
+    this.color = thrustColor || color(0, 150, 255, 155);
     this.drag = 0;
     this.duration = 5;
     this.size = 10;
