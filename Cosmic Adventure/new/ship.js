@@ -43,7 +43,8 @@ class Ship
       target.push()
       target.translate(this.x, this.y);
       target.rotate(this.direction);
-      target.image(this.img, 0, 0, this.w, this.h);
+      img.position(0, 0, this.w, this.h);
+    //  target.image(this.img, 0, 0, this.w, this.h);
       target.pop();
 
   }

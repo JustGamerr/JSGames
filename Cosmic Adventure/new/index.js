@@ -113,7 +113,10 @@ function draw()
 
   if (register[27])
   {
-    paused = true;
+    if(paused)
+      paused = false;
+    else
+      paused = true;
   }
 
   if(paused)
