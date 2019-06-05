@@ -224,9 +224,15 @@ function draw()
     screenNum++;
 
     if(screenNum == 1)
-      drawHUD(canvas, player2);
-    if(screenNum == 2)
+    {
       drawHUD(canvas, player);
+      continue;
+    }
+    if(screenNum == 2)
+    {
+      drawHUD(canvas, player2);
+      continue;
+    }
 
   }
   for (var screen of screens)
