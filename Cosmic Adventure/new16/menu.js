@@ -21,7 +21,7 @@ class Menu
 
     for(var button of this.pages[this.page])
     {
-      if(button.text == "Version: 1.4.7")
+      if(button.text == "Version: 1.4.9")
       {
         button.draw();
         continue;
