@@ -40,6 +40,8 @@ class Projectile
         {
           if(t == player2)
             player2.health -= 25;
+          if(t == player)
+            player.health -= 25;
           this.collided = true;
           momentum(this, t);
           particles.push(new BoomParticle(this.x, this.y,0,0))
@@ -58,9 +60,12 @@ class Projectile
 
 function momentum(obj1, obj2)
 {
+  if(obj2.placeFree(obj2.x, obj2.y, obj1.directon))
+  {
     var totalMass = obj1.mass + obj2.mass;
     obj1.vx = (obj1.vx * obj1.mass + obj2.vx * obj2.mass) / totalMass;
     obj2.vx = obj1.vx;
     obj1.vy = (obj1.vy * obj1.mass + obj2.vy * obj2.mass) / totalMass;
     obj2.vy = obj1.vy;
+  }
 }
