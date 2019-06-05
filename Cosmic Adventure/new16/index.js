@@ -100,11 +100,13 @@ function setup()
       player.y = 30;
       player.vx = 0;
       player.vy = 0;
+      player.direction = 90;
       player2.health = 100;
       player2.x = 0;
       player2.y = 0;
       player2.vx = 0;
       player2.vy = 0;
+      player2.direction = 90;
     }, color(130, 0, 180), color(180, 0, 255));
     let unpauseButton = new Button(250, 225, 300, 50, "Return to Game", function () { paused = false; playing = true; }, color(130, 0, 180), color(180, 0, 255));
 
@@ -132,12 +134,12 @@ function start()
     {
         screens.push(new GameMap(width * 0.75, height * 0.75, width / 2, height / 2, { x: -1250, y: -1500 }, 3000, 2000));
     }
-    if(players.length = 1)
-    {
-      for (var i = 0; i < selectedAI; i++) {
-          players.push(new AIShip(-50, i * 25 - 100, 40, 20, shipImages[Math.floor(Math.random()*8)], 5 + i, i / 2 + 1));
-      }
-    }
+    // if(players.length = 1)
+    // {
+    //   for (var i = 0; i < selectedAI; i++) {
+    //       players.push(new AIShip(-50, i * 25 - 100, 40, 20, shipImages[Math.floor(Math.random()*8)], 5 + i, i / 2 + 1));
+    //   }
+    // }
 }
 
 function draw()
