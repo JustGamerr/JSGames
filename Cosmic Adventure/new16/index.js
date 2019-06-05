@@ -1,3 +1,12 @@
+// wall rotatedRectangularCollision - needs placefree switch
+
+// ai menu to pick either 1, 2, 5, 10 ai ships to race using buttons
+// gifs works - need spritesheet integration
+// llama use spritesheet with ai code, all ai are llamas
+
+// collectibles if have time
+// 2 players mechanic and win/lose depending on deaths and collectiion times?
+
 var player;
 var player2;
 var focus = { x: 0, y: 0 };
@@ -11,6 +20,27 @@ var playing = false;
 var paused = false;
 var menu;
 var pausedMenu;
+var selectedAI;
+
+// function sound(src)
+// {
+//   this.sound = document.createElement("audio");
+//   this.sound.src = src;
+//   this.sound.setAttribute("preload", "auto");
+//   this.sound.setAttribute("controls", "none");
+//   this.sound.style.display = "none";
+//   document.body.appendChild(this.sound);
+//
+//   this.play = function()
+//   {
+//     this.sound.play();
+//   }
+//
+//   this.stop = function()
+//   {
+//     this.sound.pause();
+//   }
+// }
 
 function centerScreen()
 {
@@ -29,8 +59,8 @@ function setup()
     centerScreen();
     canvas.parent('cosmic-game-holder');
 
-    player2 = new Ship(0, 0, 40, 20, [UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16, 222, 13, 191], p2Img, 1, 2, 0, 100, 2);
-    player = new Ship(0, 30, 40, 20, [87, 83, 65, 68, 32, 81, 69, LEFT], p1Img, 2, 2, 0, 100, 1);
+    player2 = new Ship(0, 0, 20, 40, [UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16, 222, 13, 191], p2Img, 1, 2, 0, 100, 2);
+    player = new Ship(0, 30, 20, 40, [87, 83, 65, 68, 32, 81, 69, LEFT], p1Img, 2, 2, 0, 100, 1);
     players = [player2, player];
 
     let startButton = new Button(250, 250, 200, 75, "Start Game", function () { menu.page = 1; }, color(130, 0, 180), color(180, 0, 255));
@@ -49,10 +79,35 @@ function setup()
 
     let backButton = new Button(250, 415, 325, 50, "Back to Main Menu", function () { menu.page = 0; }, color(130, 0, 180), color(180, 0, 255));
 
-    let exitButton = new Button(250, 400, 300, 50, "Exit to Main Menu", function() { menu.page = 0; playing = false; paused = false; players = [], screens = []; particles = []; projectiles = []; player.health = 100; player.x = 0; player.y = 30; player.vx = 0; player.vy = 0; player2.health = 100; player2.x = 0; player2.y = 0; player2.vx = 0; player2.vy = 0; }, color(130, 0, 180), color(180, 0, 255));
+    let exitButton = new Button(250, 400, 300, 50, "Exit to Main Menu", function()
+    {
+      menu.page = 0;
+      playing = false;
+      paused = false;
+      players = [];
+
+      for(screen of screens)
+      {
+        screen.clear();
+      }
+
+      screens = [];
+      particles = [];
+      projectiles = [];
+      player.health = 100;
+      player.x = 0;
+      player.y = 30;
+      player.vx = 0;
+      player.vy = 0;
+      player2.health = 100;
+      player2.x = 0;
+      player2.y = 0;
+      player2.vx = 0;
+      player2.vy = 0;
+    }, color(130, 0, 180), color(180, 0, 255));
     let unpauseButton = new Button(250, 225, 300, 50, "Return to Game", function () { paused = false; playing = true; }, color(130, 0, 180), color(180, 0, 255));
 
-    menu = new Menu("Cosmic Adventure", [[startButton, tutorialButton, aboutButton, versionText], [singlePlayer, splitButton, backButton], [backButton, tutorialP1Image, tutorialP2Image], [backButton, aboutText]]);
+    menu = new Menu("Cosmic Adventure", [[startButton, tutorialButton, aboutButton, versionText], [singlePlayer, splitButton, backButton], [backButton, tutorialP1Image, tutorialP2Image], [backButton, aboutText], [backButton, aiText]]); //, aiText, aiOption1, aiOption2, aiOption3, aiOption4]]);
     pausedMenu = new Menu("Paused", [[unpauseButton, exitButton], backButton]);
 }
 
@@ -76,12 +131,18 @@ function start()
     {
         screens.push(new GameMap(width * 0.75, height * 0.75, width / 2, height / 2, { x: -1250, y: -1500 }, 3000, 2000));
     }
+    if(players.length = 1)
+    {
+      for (var i = 0; i < selectedAI; i++) {
+          players.push(new AIShip(-50, i * 25 - 100, 40, 20, shipImages[Math.floor(Math.random()*8)], 5 + i, i / 2 + 1));
+      }
+    }
 }
 
 function draw()
 {
 
-
+  background(0);
   if (!playing)
   {
     menu.draw();
@@ -90,12 +151,19 @@ function draw()
 
   if (register[27])
   {
+    register[27] = false;
     paused = true;
   }
 
   if(paused)
   {
     pausedMenu.draw();
+
+    if(register[27])
+    {
+      paused = false;
+      register[27] = false;
+    }
     return;
   }
 
