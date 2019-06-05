@@ -39,20 +39,20 @@ function setup()
 
     let aboutText = new Text(250, 135, 12, color(255, 255, 255), "Cosmic Adventure is a game developed by Evan and some other kid. \nThe game is loosely based on space adventure, survival game. \nYou can choose to play as one player, or together with a friend locally. \nHUD screens for quick view of each player\'s health, speed and remaining bullets. \nIn the lower left, statistics regarding the game itself are displayed and \nupdated in real time for both players to look at throughout the game. \n\nThe overall goal of the game is to pickup the various coins throughout the map \nand proceed to the unlocked end, whilst defending yourself and sneaking around eachother \n(whilst in split screen), and make it to the end first. Whoever makes it first is the winner. \n\nHowever in single player mode, the game takes a largely different approach in which \nthe player races against the set number of enemies, from four set options \nthat are provided to the player before it starts, allowing them to specify the amount of AI \nships that will attempt to seek the end through various checkpoints and path finding. \nFirst person (or AI) to reach the end after three laps is announced the winner.");
 
-    let versionText = new Text(450, 485, 12, color(255, 255, 255), "Version: 1.4.2")
+    let versionText = new Text(450, 485, 12, color(255, 255, 255), "Version: 1.4.7");
 
     let singlePlayer = new Button(250, 200, 200, 50, "Single Player", function () { players = [player]; start(); }, color(130, 0, 180), color(180, 0, 255));
     let splitButton = new Button(250, 300, 200, 50, "Split Screen", function () { players = [player, player2]; start(); }, color(130, 0, 180), color(180, 0, 255));
 
-    //let tutorialP1Image = new Image(100, 200, 100, 50, p1Img, true);
-    //let tutorialP2Image = new Image(350, 200, 100, 50, p2Img);
+    let tutorialP1Image = new ImageGraphic(p1Img, 125, 200, 125, 125);
+    let tutorialP2Image = new ImageGraphic(p2Img, 400, 215, 100, 100);
 
     let backButton = new Button(250, 415, 325, 50, "Back to Main Menu", function () { menu.page = 0; }, color(130, 0, 180), color(180, 0, 255));
 
     let exitButton = new Button(250, 400, 300, 50, "Exit to Main Menu", function() { menu.page = 0; playing = false; paused = false; players = [], screens = []; particles = []; projectiles = []; player.health = 100; player.x = 0; player.y = 30; player.vx = 0; player.vy = 0; player2.health = 100; player2.x = 0; player2.y = 0; player2.vx = 0; player2.vy = 0; }, color(130, 0, 180), color(180, 0, 255));
     let unpauseButton = new Button(250, 225, 300, 50, "Return to Game", function () { paused = false; playing = true; }, color(130, 0, 180), color(180, 0, 255));
 
-    menu = new Menu("Cosmic Adventure", [[startButton, tutorialButton, aboutButton, versionText], [singlePlayer, splitButton, backButton], [backButton], [backButton, aboutText]]);
+    menu = new Menu("Cosmic Adventure", [[startButton, tutorialButton, aboutButton, versionText], [singlePlayer, splitButton, backButton], [backButton, tutorialP1Image, tutorialP2Image], [backButton, aboutText]]);
     pausedMenu = new Menu("Paused", [[unpauseButton, exitButton], backButton]);
 }
 
