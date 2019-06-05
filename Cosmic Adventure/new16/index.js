@@ -14,7 +14,7 @@ var players = [];
 var canvas;
 var resetDistance = 500;
 var particles = [];
-var projectiles = [new Projectile(3000, 3000, cos(0) * 15 + this.vx, sin(0) * 15), 1];
+var projectiles = [new Projectile(3000, 3000, 1 * 15, 1 * 15), 1];
 var screens = [];
 var playing = false;
 var paused = false;
