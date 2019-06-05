@@ -61,12 +61,22 @@ class Projectile
 
 function momentum(obj1, obj2)
 {
-  if(obj2.placeFree(obj2.x, obj2.y, obj1.directon))
+  if(obj2 == targets[1])
   {
+    if(obj2.placeFree(obj2.x, obj2.y, obj1.directon))
+    {
+      var totalMass = obj1.mass + obj2.mass;
+      obj1.vx = (obj1.vx * obj1.mass + obj2.vx * obj2.mass) / totalMass;
+      obj2.vx = obj1.vx;
+      obj1.vy = (obj1.vy * obj1.mass + obj2.vy * obj2.mass) / totalMass;
+      obj2.vy = obj1.vy;
+    }
+  } else {
     var totalMass = obj1.mass + obj2.mass;
     obj1.vx = (obj1.vx * obj1.mass + obj2.vx * obj2.mass) / totalMass;
     obj2.vx = obj1.vx;
     obj1.vy = (obj1.vy * obj1.mass + obj2.vy * obj2.mass) / totalMass;
     obj2.vy = obj1.vy;
   }
+
 }
