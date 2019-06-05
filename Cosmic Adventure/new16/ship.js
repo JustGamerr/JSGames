@@ -135,7 +135,7 @@ class Ship
   shoot() {
     if (register[this.shootButton]) {
       if (this.shootDelay <= 0) {
-          projectiles.push(new Projectile(this.x, this.y, cos(this.direction) * 15 * this.thrust + this.vx, sin(this.direction) * 15 * this.thrust + this.vy), this.id);
+          projectiles.push(new Projectile(this.x, this.y, cos(this.direction) * 15 * this.thrust + this.vx, sin(this.direction) * 15 * this.thrust + this.vy));
           this.shootDelay = this.shootTime;
       }
     }

@@ -1,6 +1,6 @@
 class Projectile
 {
-  constructor(x, y, vx, vy, id)
+  constructor(x, y, vx, vy)
   {
     this.x = x;
     this.y = y;
@@ -8,13 +8,13 @@ class Projectile
     this.vy = vy;
     this.size = 15;
     this.color = color(255, 0, 0, 100);
-    this.id = id;
-    if(this.id == 1)
-    {
-      this.targets = [obstacles, [player2]];
-    } else {
-      this.targets = [obstacles, [player]];
-    }
+    // this.id = id;
+    // if(this.id == 1)
+    // {
+    //   this.targets = [obstacles, [player2]];
+    // } else {
+    //   this.targets = [obstacles, [player]];
+    // }
     this.collided = false;
     this.direction = 0;
     this.w = this.size;
