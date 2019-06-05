@@ -7,6 +7,12 @@ function drawHUD(canvas, p)
   canvas.textSize(32);
   canvas.textFont("Comic Sans")
 
-  canvas.text("Speed: " + Math.sqrt(p.vx * p.vx + p.vy * p.vy).toFixed(1), 50, 480);
-  canvas.text("Health: " + p.health, 250, 480);
+  if(players.length < 2) {
+    canvas.text(p.place + "/" + players.length, 100, 480);
+    canvas.text("Speed: " + Math.sqrt(p.vx * p.vx + p.vy * p.vy).toFixed(1), 250, 480);
+    //canvas.text("Health: " + p.health, 300, 480);
+  } else {
+    canvas.text("Speed: " + Math.sqrt(p.vx * p.vx + p.vy * p.vy).toFixed(1), 50, 480);
+    canvas.text("Health: " + p.health, 250, 480);
+  }
 }

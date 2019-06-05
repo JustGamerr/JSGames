@@ -21,7 +21,7 @@ class Menu
 
     for(var button of this.pages[this.page])
     {
-      if(button.text == "Version: 1.4.6")
+      if(button.text == "Version: 1.4.8")
       {
         button.draw();
         continue;
@@ -98,23 +98,22 @@ class Button
   }
 }
 
-// class Image
-// {
-//   constructor(x, y, width, height, image, display)
-//   {
-//     this.x = x;
-//     this.y = y;
-//     this.width = width;
-//     this.height = height;
-//     this.image = image;
-//     this.display = display;
-//   }
-//
-//   draw()
-//   {
-//     //image(this.image, this.x, this.y, this.width, this.height);
-//   }
-// }
+class ImageGraphic
+{
+  constructor(image, x, y, width, height)
+  {
+    this.image = image;
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+  }
+
+  draw()
+  {
+    image(this.image, this.x, this.y, this.width, this.height);
+  }
+}
 
 class Text
 {
@@ -126,8 +125,6 @@ class Text
     this.textSize = size;
     this.textColor = color;
     this.text = text;
-
-    this.display = false;
   }
 
   draw()

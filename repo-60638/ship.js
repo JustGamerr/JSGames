@@ -109,7 +109,7 @@ class Ship {
                     c.players[this.id] = true;
                     this.nextCheckpoint++;
                 }
-                
+
             }
         }
 
