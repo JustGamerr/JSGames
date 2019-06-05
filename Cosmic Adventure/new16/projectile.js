@@ -61,7 +61,7 @@ class Projectile
 
 function momentum(obj1, obj2)
 {
-  if(obj2 == targets[1])
+  if(obj2 == player2)
   {
     if(obj2.placeFree(obj2.x, obj2.y, obj1.directon))
     {
