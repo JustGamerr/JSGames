@@ -65,22 +65,22 @@ function setup()
     centerScreen();
     canvas.parent('cosmic-game-holder');
 
-    player2 = new Ship(0, 0, 20, 40, [UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16, 222, 13, 191], p2Img, 1, 2, 0, 100, 2, 8);
+    player2 = new Ship(0, 0, 30, 60, [UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16, 222, 13, 191], p2Img, 1, 2, 0, 100, 2, 8);
     player = new Ship(0, 30, 20, 40, [87, 83, 65, 68, 32, 81, 69, LEFT], p1Img, 2, 2, 0, 100, 1, 8);
     players = [player, player2];
 
     let startButton = new Button(375, 375, 250, 75, "Start Game", function () { menu.page = 1; }, color(130, 0, 180), color(180, 0, 255));
     let tutorialButton = new Button(225, 525, 188, 75, "Tutorial", function () { menu.page = 2; }, color(130, 0, 180), color(180, 0, 255));
     let aboutButton = new Button(525, 525, 300, 75, "About the Game", function () { menu.page = 3; }, color(130, 0, 180), color(180, 0, 255));
-    let aiOneButton = new Button(90, 400, 100, 50, "1", function() { players = [player]; start(1); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
-    let aiTwoButton = new Button(278, 400, 100, 50, "2", function() { players = [player]; start(2); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
-    let aiThreeButton = new Button(465, 400, 100, 50, "5", function() { players = [player]; start(5); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
-    let aiFourButton = new Button(653, 400, 100, 50, "10", function() { players = [player]; start(10); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
+    let aiOneButton = new Button(113, 400, 100, 50, "1", function() { players = [player]; start(1); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
+    let aiTwoButton = new Button(261, 400, 100, 50, "2", function() { players = [player]; start(2); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
+    let aiThreeButton = new Button(3489, 400, 100, 50, "5", function() { players = [player]; start(5); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
+    let aiFourButton = new Button(490, 400, 100, 50, "10", function() { players = [player]; start(10); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
 
     let aboutText = new Text(375, 203, 18, color(255, 255, 255), "Cosmic Adventure is a game developed by Evan and some other kid. \nThe game is loosely based on space adventure, survival game. \nYou can choose to play as one player, or together with a friend locally. \nHUD screens for quick view of each player\'s health, speed and remaining bullets. \nIn the lower left, statistics regarding the game itself are displayed and \nupdated in real time for both players to look at throughout the game. \n\nThe overall goal of the game is to pickup the various coins throughout the map \nand proceed to the unlocked end, whilst defending yourself and sneaking around eachother \n(whilst in split screen), and make it to the end first. Whoever makes it first is the winner. \n\nHowever in single player mode, the game takes a largely different approach in which \nthe player races against the set number of enemies, from four set options \nthat are provided to the player before it starts, allowing them to specify the amount of AI \nships that will attempt to seek the end through various checkpoints and path finding. \nFirst person (or AI) to reach the end after three laps is announced the winner.");
 
-    let versionText = new Text(700, 735, 14, color(255, 255, 255), "Version: 1.5.2");
-    let aiText = new Text(375, 300, 18, color(255, 255, 255), "Select the amount of AI ships you want to race around the course.")
+    let versionText = new Text(690, 735, 14, color(255, 255, 255), "Version: 1.5.2");
+    let aiText = new Text(375, 300, 24, color(255, 255, 255), "Select the amount of AI ships you want to race around the course.")
 
     let tutorialP1Text = new Text(250, 365, 16, color(255, 255, 255), "Controls: \nW, A, S, D to move around, \nQ and E to strafe left and right, \nSpace to rapidly boost, \nLeft Click to fire projectiles.");
     let tutorialP2Text = new Text(515, 365, 16, color(255, 255, 255), "Controls: \nUp, Down, Left, Right Arrows to move around, \nQuote and Enter to strafe left and right, \nRight Shift to rapidly boost, \nForward Slash to fire projectiles.");
@@ -91,7 +91,7 @@ function setup()
     let tutorialP1Image = new ImageGraphic(p1Img, 195, 305, 125, 125);
     let tutorialP2Image = new ImageGraphic(p2Img, 495, 315, 100, 100);
 
-    let backButton = new Button(375, 580, 325, 50, "Back to Main Menu", function () { menu.page = 0; }, color(130, 0, 180), color(180, 0, 255));
+    let backButton = new Button(375, 595, 325, 50, "Back to Main Menu", function () { menu.page = 0; }, color(130, 0, 180), color(180, 0, 255));
 
     let exitButton = new Button(375, 525, 300, 50, "Exit to Main Menu", function()
     {
