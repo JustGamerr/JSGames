@@ -1,17 +1,12 @@
-// wall rotatedRectangularCollision - needs placefree switch
 
-// ai menu to pick either 1, 2, 5, 10 ai ships to race using buttons
-// gifs works - need spritesheet integration
-// llama use spritesheet with ai code, all ai are llamas
+// llama use with ai code, all ai are llamas
 
 // collectibles if have time
 // 2 players mechanic and win/lose depending on deaths and collectiion times?
 
 // bugs:
 // p2 shooting
-// p1 HUD
 // ai spawning
-// single player pause
 // p1 targets
 // p1 win on p2 0 and p2 win on p1 0
 var player;
@@ -72,7 +67,7 @@ function setup()
     let startButton = new Button(375, 375, 250, 75, "Start Game", function () { menu.page = 1; }, color(130, 0, 180), color(180, 0, 255));
     let tutorialButton = new Button(225, 525, 188, 75, "Tutorial", function () { menu.page = 2; }, color(130, 0, 180), color(180, 0, 255));
     let aboutButton = new Button(525, 525, 300, 75, "About the Game", function () { menu.page = 3; }, color(130, 0, 180), color(180, 0, 255));
-    let aiOneButton = new Button(113, 415, 100, 50, "1", function() { players = [player]; start(1); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
+    let aiOneButton = new Button(113, 415, 100, 50, "1", function() { sound(gameMusic); players = [player]; start(1); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
     let aiTwoButton = new Button(261, 415, 100, 50, "2", function() { players = [player]; start(2); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
     let aiThreeButton = new Button(348, 415, 100, 50, "5", function() { players = [player]; start(5); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
     let aiFourButton = new Button(490, 415, 100, 50, "10", function() { players = [player]; start(10); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));

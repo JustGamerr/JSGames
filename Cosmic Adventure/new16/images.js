@@ -1,3 +1,4 @@
+var gameMusic;
 var bkgImage;
 var p1Img;
 var p1IdleImg;
@@ -12,6 +13,9 @@ var shipImages = [];
 
 function preload()
 {
+
+  gameMusic = loadSound("http://cosmicadventure.xyz/game/resources/gamemusic.mp3");
+
   bkgImage = loadImage("http://cosmicadventure.xyz/game/resources/bkgImage.jpg");
 
   p1Sheet = loadImage("http://cosmicadventure.xyz/game/resources/p1fullsheet.png");
