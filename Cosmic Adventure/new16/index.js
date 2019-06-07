@@ -23,25 +23,6 @@ var paused = false;
 var menu;
 var pausedMenu;
 
-function sound(src)
-{
-  this.sound = document.createElement("audio");
-  this.sound.src = src;
-  this.sound.setAttribute("preload", "auto");
-  this.sound.setAttribute("controls", "none");
-  this.sound.style.display = "none";
-  document.body.appendChild(this.sound);
-
-  this.play = function()
-  {
-    this.sound.play();
-  }
-
-  this.stop = function()
-  {
-    this.sound.pause();
-  }
-}
 
 function centerScreen()
 {
@@ -67,7 +48,7 @@ function setup()
     let startButton = new Button(375, 375, 250, 75, "Start Game", function () { menu.page = 1; }, color(130, 0, 180), color(180, 0, 255));
     let tutorialButton = new Button(225, 525, 188, 75, "Tutorial", function () { menu.page = 2; }, color(130, 0, 180), color(180, 0, 255));
     let aboutButton = new Button(525, 525, 300, 75, "About the Game", function () { menu.page = 3; }, color(130, 0, 180), color(180, 0, 255));
-    let aiOneButton = new Button(113, 415, 100, 50, "1", function() { sound(gameMusic); players = [player]; start(1); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
+    let aiOneButton = new Button(113, 415, 100, 50, "1", function() { gameMusic.play(); players = [player]; start(1); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
     let aiTwoButton = new Button(261, 415, 100, 50, "2", function() { players = [player]; start(2); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
     let aiThreeButton = new Button(348, 415, 100, 50, "5", function() { players = [player]; start(5); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
     let aiFourButton = new Button(490, 415, 100, 50, "10", function() { players = [player]; start(10); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
@@ -162,6 +143,7 @@ function draw()
 
   if (register[27])
   {
+    gameMusic.stop();
     register[27] = false;
     paused = true;
   }
