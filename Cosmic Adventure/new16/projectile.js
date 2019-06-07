@@ -57,7 +57,7 @@ class Projectile
             } else {
               gameMusic.pause();
               playerTwoWin.draw();
-            }s
+            }
           }
           this.collided = true;
           momentum(this, t);
