@@ -69,9 +69,9 @@ function setup()
     player = new Ship(0, 30, 20, 40, [87, 83, 65, 68, 32, 81, 69, LEFT], p1Img, 2, 2, 0, 100, 1, 8);
     players = [player, player2];
 
-    let startButton = new Button(375, 375, 250, 100, "Start Game", function () { menu.page = 1; }, color(130, 0, 180), color(180, 0, 255));
-    let tutorialButton = new Button(225, 525, 125, 50, "Tutorial", function () { menu.page = 2; }, color(130, 0, 180), color(180, 0, 255));
-    let aboutButton = new Button(525, 525, 200, 50, "About the Game", function () { menu.page = 3; }, color(130, 0, 180), color(180, 0, 255));
+    let startButton = new Button(375, 375, 300, 100, "Start Game", function () { menu.page = 1; }, color(130, 0, 180), color(180, 0, 255));
+    let tutorialButton = new Button(225, 525, 188, 75, "Tutorial", function () { menu.page = 2; }, color(130, 0, 180), color(180, 0, 255));
+    let aboutButton = new Button(525, 525, 300, 75, "About the Game", function () { menu.page = 3; }, color(130, 0, 180), color(180, 0, 255));
     let aiOneButton = new Button(90, 400, 100, 50, "1", function() { players = [player]; start(1); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
     let aiTwoButton = new Button(278, 400, 100, 50, "2", function() { players = [player]; start(2); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
     let aiThreeButton = new Button(465, 400, 100, 50, "5", function() { players = [player]; start(5); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
