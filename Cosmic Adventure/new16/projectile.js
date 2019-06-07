@@ -40,9 +40,25 @@ class Projectile
         if (rotatedRectangularCollision(this, t))
         {
           if(t == player2)
-            player2.health -= 25;
+          {
+            if(player2.health > 25)
+            {
+              player2.health -= 25;
+            }
+          } else {
+            gameMusic.pause();
+            playerOneWin.draw();
+          }
           if(t == player)
-            player.health -= 25;
+          {
+            if(player.health > 25)
+            {
+              player.health -= 25;
+            }
+          } else {
+            gameMusic.pause();
+            playerTwoWin.draw();
+          }
           this.collided = true;
           momentum(this, t);
           particles.push(new BoomParticle(this.x, this.y,0,0))

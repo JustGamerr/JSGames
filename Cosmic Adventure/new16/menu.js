@@ -1,17 +1,18 @@
 class Menu
 {
-  constructor(text, pages, backgroundColor, textColor)
+  constructor(text, pages, useColor, ackgroundColor, textColor)
   {
     this.text = text;
     this.pages = pages;
     this.page = 0;
+    this.useColor = useColor;
     this.color = backgroundColor || color(0, 0, 0);
     this.textColor = textColor || color(0, 191, 255);
     this.objectsNum = 0;
   }
   draw()
   {
-    if(this.color != -1)
+    if(this.useColor)
       background(this.color);
 
     fill(this.textColor);

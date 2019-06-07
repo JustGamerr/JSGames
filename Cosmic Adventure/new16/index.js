@@ -136,10 +136,10 @@ function setup()
     }, color(130, 0, 180), color(180, 0, 255));
     let unpauseButton = new Button(375, 350, 300, 50, "Return to Game", function () { gameMusic.play(); paused = false; playing = true; }, color(130, 0, 180), color(180, 0, 255));
 
-    menu = new Menu("Cosmic Adventure", [[startButton, tutorialButton, aboutButton, versionText], [singlePlayer, splitButton, backButton], [backButton, tutorialP1Image, tutorialP2Image, tutorialP1Text, tutorialP2Text], [backButton, aboutText], [backButton, aiText, aiOneButton, aiTwoButton, aiThreeButton, aiFourButton]]); //, aiText, aiOption1, aiOption2, aiOption3, aiOption4]]);
-    pausedMenu = new Menu("Paused", [[unpauseButton, exitButton], backButton]);
-    playerOneWin = new Menu("Player One Wins", [[playAgainButton, exitButton], backButton]);
-    playerTwoWin = new Menu("Player Two Wins", [[playAgainButton, exitButton], backButton]);
+    menu = new Menu("Cosmic Adventure", [[startButton, tutorialButton, aboutButton, versionText], [singlePlayer, splitButton, backButton], [backButton, tutorialP1Image, tutorialP2Image, tutorialP1Text, tutorialP2Text], [backButton, aboutText], [backButton, aiText, aiOneButton, aiTwoButton, aiThreeButton, aiFourButton]], true); //, aiText, aiOption1, aiOption2, aiOption3, aiOption4]]);
+    pausedMenu = new Menu("Paused", [[unpauseButton, exitButton], backButton], true);
+    playerOneWin = new Menu("Player One Wins", [[playAgainButton, exitButton], backButton], false);
+    playerTwoWin = new Menu("Player Two Wins", [[playAgainButton, exitButton], backButton], false);
 }
 
 function start(aiAmount)
