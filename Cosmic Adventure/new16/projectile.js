@@ -8,7 +8,7 @@ class Projectile
     this.vy = vy;
     this.size = 15;
     this.color = color(255, 0, 0, 100);
-    this.targets = [obstacles, [player2]];
+    //this.targets = [obstacles, [player2]];
     this.id = id;
     if(this.id == 1)
     {
