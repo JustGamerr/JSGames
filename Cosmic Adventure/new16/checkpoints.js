@@ -6,7 +6,8 @@ class Checkpoint extends Obstacle
     this.players = [];
   }
 
-  draw(c){
+  draw(c)
+  {
     c.push()
         c.translate(this.x, this.y);
         c.rotate(this.direction);

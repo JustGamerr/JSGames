@@ -16,17 +16,29 @@ class Menu
 
     fill(this.textColor);
     textAlign(CENTER);
-    textSize(56);
-    text(this.text, 250, 100);
+    textSize(64);
+    text(this.text, 375, 150);
 
     for(var button of this.pages[this.page])
     {
-      if(button.text == "Version: 1.4.9")
+      if(button.text == "1" || button.text == "2" || button.text == "5" || button.text == "10")
+      {
+        button.draw();
+        if(register[LEFT] && button.mouseCollide())
+        {
+          button.action();
+          register[LEFT] = false;
+          continue;
+        }
+      }
+
+      if(button.text == "Version: 1.5.2")
       {
         button.draw();
         continue;
       }
       if(menu.page > 1)
+      {
         if(button.text != "Back to Main Menu")
         {
           button.draw();
@@ -40,6 +52,8 @@ class Menu
             continue;
           }
         }
+      }
+
 
       button.draw();
       if(register[LEFT] && button.mouseCollide())

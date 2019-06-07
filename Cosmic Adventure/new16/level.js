@@ -23,4 +23,19 @@ var obstacles =
   // new Obstacle(1300, -1200, 450, 150)
 ];
 
+var checkpoints = [
+
+    new Checkpoint(600, -250, 250, 10),
+    new Checkpoint(750, -600, 10, 250),
+    new Checkpoint(900, -250, 250, 10),
+    new Checkpoint(1250, -250, 450, 10),
+    new Checkpoint(1250, -750, 450, 10),
+    new Checkpoint(500, -1000, 10, 500),
+    new Checkpoint(0, -500, 10, 500),
+    new Checkpoint(-500, -1500, 10, 450),
+    new Checkpoint(-1250, -1250, 500, 10),
+    new Checkpoint(-750, -750, 500, 10),
+    new Checkpoint(-1250, -250, 500, 10)
+];
+
 var finish = new FinishLine(0, 0, 10, 500);
