@@ -12,9 +12,9 @@ class Projectile
     this.id = id;
     if(this.id == 1)
     {
-      this.targets = [obstacles, [player2]];
-    } else {
       this.targets = [obstacles, [player]];
+    } else {
+      this.targets = [obstacles, [player2]];
     }
     this.collided = false;
     this.direction = 0;
