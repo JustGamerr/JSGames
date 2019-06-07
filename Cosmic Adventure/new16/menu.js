@@ -1,6 +1,6 @@
 class Menu
 {
-  constructor(text, pages, useColor, ackgroundColor, textColor)
+  constructor(text, pages, useColor, backgroundColor, textColor)
   {
     this.text = text;
     this.pages = pages;
