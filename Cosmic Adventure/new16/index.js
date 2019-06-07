@@ -48,10 +48,10 @@ function setup()
     let startButton = new Button(375, 375, 250, 75, "Start Game", function () { menu.page = 1; }, color(130, 0, 180), color(180, 0, 255));
     let tutorialButton = new Button(225, 525, 188, 75, "Tutorial", function () { menu.page = 2; }, color(130, 0, 180), color(180, 0, 255));
     let aboutButton = new Button(525, 525, 300, 75, "About the Game", function () { menu.page = 3; }, color(130, 0, 180), color(180, 0, 255));
-    let aiOneButton = new Button(113, 415, 100, 50, "1", function() { gameMusic.play(); players = [player]; start(1); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
-    let aiTwoButton = new Button(261, 415, 100, 50, "2", function() { players = [player]; start(2); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
-    let aiThreeButton = new Button(348, 415, 100, 50, "5", function() { players = [player]; start(5); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
-    let aiFourButton = new Button(490, 415, 100, 50, "10", function() { players = [player]; start(10); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
+    let aiOneButton = new Button(113, 415, 100, 50, "1", function() { gameMusic.playMode('restart'); gameMusic.loop(); players = [player]; start(1); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
+    let aiTwoButton = new Button(261, 415, 100, 50, "2", function() { gameMusic.playMode('restart'); gameMusic.loop(); players = [player]; start(2); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
+    let aiThreeButton = new Button(348, 415, 100, 50, "5", function() { gameMusic.playMode('restart'); gameMusic.loop(); players = [player]; start(5); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
+    let aiFourButton = new Button(490, 415, 100, 50, "10", function() { gameMusic.playMode('restart'); gameMusic.loop(); players = [player]; start(10); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
 
     let aboutText = new Text(375, 203, 18, color(255, 255, 255), "Cosmic Adventure is a game developed by Evan and some other kid. \nThe game is loosely based on space adventure, survival game. \nYou can choose to play as one player, or together with a friend locally. \nHUD screens for quick view of each player\'s health, speed and remaining bullets. \nIn the lower left, statistics regarding the game itself are displayed and \nupdated in real time for both players to look at throughout the game. \n\nThe overall goal of the game is to pickup the various coins throughout the map \nand proceed to the unlocked end, whilst defending yourself and sneaking around eachother \n(whilst in split screen), and make it to the end first. Whoever makes it first is the winner. \n\nHowever in single player mode, the game takes a largely different approach in which \nthe player races against the set number of enemies, from four set options \nthat are provided to the player before it starts, allowing them to specify the amount of AI \nships that will attempt to seek the end through various checkpoints and path finding. \nFirst person (or AI) to reach the end after three laps is announced the winner.");
 
@@ -75,6 +75,7 @@ function setup()
       playing = false;
       paused = false;
       players = [];
+      gameMusic.stop();
 
       for(screen of screens)
       {
@@ -97,7 +98,7 @@ function setup()
       player2.vy = 0;
       player2.direction = 90;
     }, color(130, 0, 180), color(180, 0, 255));
-    let unpauseButton = new Button(375, 350, 300, 50, "Return to Game", function () { paused = false; playing = true; }, color(130, 0, 180), color(180, 0, 255));
+    let unpauseButton = new Button(375, 350, 300, 50, "Return to Game", function () { gameMusic.play(); paused = false; playing = true; }, color(130, 0, 180), color(180, 0, 255));
 
     menu = new Menu("Cosmic Adventure", [[startButton, tutorialButton, aboutButton, versionText], [singlePlayer, splitButton, backButton], [backButton, tutorialP1Image, tutorialP2Image, tutorialP1Text, tutorialP2Text], [backButton, aboutText], [backButton, aiText, aiOneButton, aiTwoButton, aiThreeButton, aiFourButton]]); //, aiText, aiOption1, aiOption2, aiOption3, aiOption4]]);
     pausedMenu = new Menu("Paused", [[unpauseButton, exitButton], backButton]);
@@ -143,7 +144,7 @@ function draw()
 
   if (register[27])
   {
-    gameMusic.stop();
+    gameMusic.pause();
     register[27] = false;
     paused = true;
   }
