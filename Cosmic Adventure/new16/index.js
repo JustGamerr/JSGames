@@ -9,6 +9,7 @@
 // ai spawning
 // p1 targets
 // p1 win on p2 0 and p2 win on p1 0
+// volume slider in pause
 var player;
 var player2;
 var focus = { x: 0, y: 0 };
@@ -62,7 +63,7 @@ function setup()
     let tutorialP2Text = new Text(515, 365, 20, color(255, 255, 255), "Controls: \nUp, Down, Left, Right Arrows to move around, \nQuote and Enter to strafe left and right, \nRight Shift to rapidly boost, \nForward Slash to fire projectiles.");
 
     let singlePlayer = new Button(375, 275, 250, 75, "Single Player", function () { menu.page = 4; }, color(130, 0, 180), color(180, 0, 255)); //{ players = [player]; start(); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
-    let splitButton = new Button(375, 425, 250, 75, "Split Screen", function () { players = [player, player2]; start(); }, color(130, 0, 180), color(180, 0, 255));
+    let splitButton = new Button(375, 425, 250, 75, "Split Screen", function () { gameMusic.playMode('restart'); gameMusic.loop(); players = [player, player2]; start(); }, color(130, 0, 180), color(180, 0, 255));
 
     let tutorialP1Image = new ImageGraphic(p1Img, 195, 305, 125, 125);
     let tutorialP2Image = new ImageGraphic(p2Img, 495, 315, 100, 100);
