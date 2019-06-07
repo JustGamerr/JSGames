@@ -65,7 +65,7 @@ function setup()
     centerScreen();
     canvas.parent('cosmic-game-holder');
 
-    player2 = new Ship(0, 0, 50, 40, [UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16, 222, 13, 191], p2Img, 1, 2, 0, 100, 2, 8);
+    player2 = new Ship(0, 0, 80, 60, [UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16, 222, 13, 191], p2Img, 1, 2, 0, 100, 2, 8);
     player = new Ship(0, 30, 20, 40, [87, 83, 65, 68, 32, 81, 69, LEFT], p1Img, 2, 2, 0, 100, 1, 8);
     players = [player, player2];
 
@@ -249,12 +249,12 @@ function draw()
 
     if(screenNum == 1)
     {
-      drawHUD(canvas, player);
+      drawHUD(canvas, players[0]);
       continue;
     }
     if(screenNum == 2)
     {
-      drawHUD(canvas, player2);
+      drawHUD(canvas, players[1]);
       continue;
     }
 

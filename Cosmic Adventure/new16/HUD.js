@@ -1,6 +1,6 @@
 function drawHUD(canvas, p)
 {
-  canvas.fill(100)
+  canvas.fill(100);
   canvas.rect(250, 475, 500, 50);
 
   canvas.fill(0);
@@ -12,7 +12,8 @@ function drawHUD(canvas, p)
     canvas.text("Speed: " + Math.sqrt(p.vx * p.vx + p.vy * p.vy).toFixed(1), 250, 480);
     //canvas.text("Health: " + p.health, 300, 480);
   } else {
-    canvas.text("Speed: " + Math.sqrt(p.vx * p.vx + p.vy * p.vy).toFixed(1), 50, 480);
-    canvas.text("Health: " + p.health, 250, 480);
+    canvas.text("Coins: " + p.coins, 50, 480);
+    canvas.text("Speed: " + Math.sqrt(p.vx * p.vx + p.vy * p.vy).toFixed(1), 200, 480);
+    canvas.text("Health: " + p.health, 350, 480);
   }
 }
