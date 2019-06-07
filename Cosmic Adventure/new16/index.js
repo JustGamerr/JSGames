@@ -23,6 +23,8 @@ var playing = false;
 var paused = false;
 var menu;
 var pausedMenu;
+var playerOneWin;
+var playerTwoWin;
 
 
 function centerScreen()
@@ -69,6 +71,39 @@ function setup()
     let tutorialP2Image = new ImageGraphic(p2Img, 495, 315, 100, 100);
 
     let backButton = new Button(375, 595, 325, 50, "Back to Main Menu", function () { menu.page = 0; }, color(130, 0, 180), color(180, 0, 255));
+    let playAgainButton = new Button(375, 595, 325, 50, "Play Again", function ()
+    {
+      playing = false;
+      paused = false;
+      players = [];
+      gameMusic.stop();
+
+      for(screen of screens)
+      {
+        screen.clear();
+      }
+
+      screens = [];
+      particles = [];
+      projectiles = [];
+      player.health = 100;
+      player.x = 0;
+      player.y = 30;
+      player.vx = 0;
+      player.vy = 0;
+      player.direction = 90;
+      player2.health = 100;
+      player2.x = 0;
+      player2.y = 0;
+      player2.vx = 0;
+      player2.vy = 0;
+      player2.direction = 90;
+
+      gameMusic.playMode('restart');
+      gameMusic.loop();
+      players = [player, player2];
+      start();
+    }, color(130, 0, 180), color(180, 0, 255));
 
     let exitButton = new Button(375, 525, 300, 50, "Exit to Main Menu", function()
     {
@@ -103,6 +138,8 @@ function setup()
 
     menu = new Menu("Cosmic Adventure", [[startButton, tutorialButton, aboutButton, versionText], [singlePlayer, splitButton, backButton], [backButton, tutorialP1Image, tutorialP2Image, tutorialP1Text, tutorialP2Text], [backButton, aboutText], [backButton, aiText, aiOneButton, aiTwoButton, aiThreeButton, aiFourButton]]); //, aiText, aiOption1, aiOption2, aiOption3, aiOption4]]);
     pausedMenu = new Menu("Paused", [[unpauseButton, exitButton], backButton]);
+    playerOneWin = new Menu("Player One Wins", [[playAgainButton, exitButton], backButton]);
+    playerTwoWin = new Menu("Player Two Wins", [[playAgainButton, exitButton], backButton]);
 }
 
 function start(aiAmount)
