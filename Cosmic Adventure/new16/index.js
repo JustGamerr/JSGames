@@ -65,7 +65,7 @@ function setup()
     centerScreen();
     canvas.parent('cosmic-game-holder');
 
-    player2 = new Ship(0, 0, 80, 60, [UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16, 222, 13, 191], p2Img, 1, 2, 0, 100, 2, 8);
+    player2 = new Ship(0, 0, 20, 40, [UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16, 222, 13, 191], p2Img, 1, 2, 0, 100, 2, 8);
     player = new Ship(0, 30, 20, 40, [87, 83, 65, 68, 32, 81, 69, LEFT], p1Img, 2, 2, 0, 100, 1, 8);
     players = [player, player2];
 
@@ -82,14 +82,14 @@ function setup()
     let versionText = new Text(700, 735, 14, color(255, 255, 255), "Version: 1.5.2");
     let aiText = new Text(375, 300, 18, color(255, 255, 255), "Select the amount of AI ships you want to race around the course.")
 
-    let tutorialP1Text = new Text(250, 390, 16, color(255, 255, 255), "Controls: \nW, A, S, D to move around, \nQ and E to strafe left and right, \nSpace to rapidly boost, \nLeft Click to fire projectiles.");
-    let tutorialP2Text = new Text(495, 390, 16, color(255, 255, 255), "Controls: \nUp, Down, Left, Right Arrows to move around, \nQuote and Enter to strafe left and right, \nRight Shift to rapidly boost, \nForward Slash to fire projectiles.");
+    let tutorialP1Text = new Text(275, 375, 16, color(255, 255, 255), "Controls: \nW, A, S, D to move around, \nQ and E to strafe left and right, \nSpace to rapidly boost, \nLeft Click to fire projectiles.");
+    let tutorialP2Text = new Text(515, 375, 16, color(255, 255, 255), "Controls: \nUp, Down, Left, Right Arrows to move around, \nQuote and Enter to strafe left and right, \nRight Shift to rapidly boost, \nForward Slash to fire projectiles.");
 
     let singlePlayer = new Button(375, 275, 400, 100, "Single Player", function () { menu.page = 4; }, color(130, 0, 180), color(180, 0, 255)); //{ players = [player]; start(); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
     let splitButton = new Button(375, 425, 400, 100, "Split Screen", function () { players = [player, player2]; start(); }, color(130, 0, 180), color(180, 0, 255));
 
-    let tutorialP1Image = new ImageGraphic(p1Img, 175, 325, 125, 125);
-    let tutorialP2Image = new ImageGraphic(p2Img, 505, 335, 100, 100);
+    let tutorialP1Image = new ImageGraphic(p1Img, 195, 325, 125, 125);
+    let tutorialP2Image = new ImageGraphic(p2Img, 495, 335, 100, 100);
 
     let backButton = new Button(375, 540, 325, 50, "Back to Main Menu", function () { menu.page = 0; }, color(130, 0, 180), color(180, 0, 255));
 
