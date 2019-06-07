@@ -44,20 +44,20 @@ class Projectile
             if(player2.health > 25)
             {
               player2.health -= 25;
+            } else {
+              gameMusic.pause();
+              playerOneWin.draw();
             }
-          } else {
-            gameMusic.pause();
-            playerOneWin.draw();
           }
           if(t == player)
           {
             if(player.health > 25)
             {
               player.health -= 25;
-            }
-          } else {
-            gameMusic.pause();
-            playerTwoWin.draw();
+            } else {
+              gameMusic.pause();
+              playerTwoWin.draw();
+            }s
           }
           this.collided = true;
           momentum(this, t);
