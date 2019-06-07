@@ -1,6 +1,6 @@
 class Ship
 {
-  constructor(x, y, w, h, controls, img, id = 1, speed = 1, direction = 0, health, shipNum, numOfFrames, sw, sh)
+  constructor(x, y, w, h, controls, img, id, speed = 1, direction = 0, health, shipNum, numOfFrames, sw, sh)
   {
     this.x = x;
     this.y = y;
@@ -142,7 +142,7 @@ class Ship
   shoot() {
     if (register[this.shootButton]) {
       if (this.shootDelay <= 0) {
-          projectiles.push(new Projectile(this.x, this.y, cos(this.direction) * 15 * this.thrust + this.vx, sin(this.direction) * 15 * this.thrust + this.vy));
+          projectiles.push(new Projectile(this.x, this.y, cos(this.direction) * 15 * this.thrust + this.vx, sin(this.direction) * 15 * this.thrust + this.vy, this.id));
           this.shootDelay = this.shootTime;
       }
     }
