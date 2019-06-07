@@ -46,7 +46,7 @@ class Projectile
               player2.health -= 25;
             } else {
               gameMusic.pause();
-              playerOneWin.draw();
+              p1Win = true;
             }
           }
           if(t == player)
@@ -56,7 +56,7 @@ class Projectile
               player.health -= 25;
             } else {
               gameMusic.pause();
-              playerTwoWin.draw();
+              p2Win = true;
             }
           }
           this.collided = true;

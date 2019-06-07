@@ -24,6 +24,8 @@ var paused = false;
 var menu;
 var pausedMenu;
 var playerOneWin;
+var p1Win;
+var p2Win;
 var playerTwoWin;
 
 
@@ -75,6 +77,8 @@ function setup()
     {
       playing = false;
       paused = false;
+      p1Win = false;
+      p2Win = false;
       players = [];
       gameMusic.stop();
 
@@ -109,6 +113,8 @@ function setup()
     {
       menu.page = 0;
       playing = false;
+      p1Win = false;
+      p2Win = false;
       paused = false;
       players = [];
       gameMusic.stop();
@@ -138,14 +144,16 @@ function setup()
 
     menu = new Menu("Cosmic Adventure", [[startButton, tutorialButton, aboutButton, versionText], [singlePlayer, splitButton, backButton], [backButton, tutorialP1Image, tutorialP2Image, tutorialP1Text, tutorialP2Text], [backButton, aboutText], [backButton, aiText, aiOneButton, aiTwoButton, aiThreeButton, aiFourButton]], true); //, aiText, aiOption1, aiOption2, aiOption3, aiOption4]]);
     pausedMenu = new Menu("Paused", [[unpauseButton, exitButton], backButton], true);
-    playerOneWin = new Menu("Player One Wins", [[playAgainButton, exitButton], backButton], false);
-    playerTwoWin = new Menu("Player Two Wins", [[playAgainButton, exitButton], backButton], false);
+    playerOneWin = new Menu("Player One Wins", [[playAgainButton, exitButton], backButton], true);
+    playerTwoWin = new Menu("Player Two Wins", [[playAgainButton, exitButton], backButton], true);
 }
 
 function start(aiAmount)
 {
     background(0)
     playing = true;
+    p1Win = false;
+    p2Win = false;
     let rows = 1;
     let cols = 1;
     if (players.length > 1)
@@ -172,7 +180,6 @@ function start(aiAmount)
 
 function draw()
 {
-
   background(0);
   if (!playing)
   {
@@ -185,6 +192,18 @@ function draw()
     gameMusic.pause();
     register[27] = false;
     paused = true;
+  }
+
+  if(p1Win)
+  {
+    playerOneWin.draw();
+    return;
+  }
+
+  if(p2Win)
+  {
+    playerTwoWin.draw();
+    return;
   }
 
   if(paused)
