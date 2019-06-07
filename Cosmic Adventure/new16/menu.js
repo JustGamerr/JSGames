@@ -21,6 +21,17 @@ class Menu
 
     for(var button of this.pages[this.page])
     {
+      if(button.text == "Exit to Main Menu" || button.text == "Return to Game")
+      {
+        button.draw();
+        if(register[LEFT] && button.mouseCollide())
+        {
+          button.action();
+          register[LEFT] = false;
+          continue;
+        }
+      }
+
       if(button.text == "1" || button.text == "2" || button.text == "5" || button.text == "10")
       {
         button.draw();
