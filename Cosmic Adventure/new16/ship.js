@@ -42,7 +42,6 @@ class Ship
     this.sw = 32;
     this.sh = 32;
     this.frame = 0;
-    this.frameSpeed = 30;
 
   }
 

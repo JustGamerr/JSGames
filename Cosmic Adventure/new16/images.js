@@ -29,7 +29,7 @@ function preload()
   p2FlameImg = loadImage("http://cosmicadventure.xyz/game/resources/p2fullflame.png");
   p2MovingImg = loadImage("http://cosmicadventure.xyz/game/resources/p2moving.gif");
 
-  aiImg = loadImage("http://cosmicadventure.xyz/game/resources/llama.gif");
+  aiImg = loadImage("http://cosmicadventure.xyz/game/resources/llamaone.png");
 
   shipImages = [p1Img, p1IdleImg, p1FlameImg, p1MovingImg, p2Img, p2IdleImg, p2FlameImg, p2MovingImg, aiImg];
 }

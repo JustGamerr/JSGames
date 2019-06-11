@@ -39,11 +39,11 @@ class Projectile
       for (var t of list) {
         if (rotatedRectangularCollision(this, t))
         {
-          if(t == player2)
+          if(t == player2 && players[1] == player2)
           {
-            if(player2.health > 25)
+            if(player2.health > 10)
             {
-              player2.health -= 25;
+              player2.health -= 10;
             } else {
               gameMusic.pause();
               p1Win = true;
@@ -51,9 +51,9 @@ class Projectile
           }
           if(t == player)
           {
-            if(player.health > 25)
+            if(player.health > 10)
             {
-              player.health -= 25;
+              player.health -= 10;
             } else {
               gameMusic.pause();
               p2Win = true;

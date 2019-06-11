@@ -1,15 +1,9 @@
-
-// llama use with ai code, all ai are llamas
-
 // collectibles if have time
 // 2 players mechanic and win/lose depending on deaths and collectiion times?
 
 // bugs:
-// p2 shooting
-// ai spawning
-// p1 targets
-// p1 win on p2 0 and p2 win on p1 0
-// volume slider in pause
+// ai movement
+// make health impact speed to max 0.5?
 var player;
 var player2;
 var focus = { x: 0, y: 0 };
@@ -27,6 +21,7 @@ var playerOneWin;
 var p1Win;
 var p2Win;
 var playerTwoWin;
+var volumeSlider;
 
 
 function centerScreen()
@@ -47,33 +42,32 @@ function setup()
     canvas.parent('cosmic-game-holder');
 
     player2 = new Ship(0, 0, 30, 40, [UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16, 222, 13, 191], p2Img, 1, 2, 0, 100, 2, 8);
-    player = new Ship(0, 30, 20, 40, [87, 83, 65, 68, 32, 81, 69, LEFT], p1Img, 2, 2, 0, 100, 1, 8);
-    players = [player, player2];
+    player = new Ship(0, 30, 25, 35, [87, 83, 65, 68, 32, 81, 69, LEFT], p1Img, 2, 2, 0, 100, 1, 8);
 
     let startButton = new Button(375, 375, 250, 75, "Start Game", function () { menu.page = 1; }, color(130, 0, 180), color(180, 0, 255));
-    let tutorialButton = new Button(225, 525, 188, 75, "Tutorial", function () { menu.page = 2; }, color(130, 0, 180), color(180, 0, 255));
-    let aboutButton = new Button(525, 525, 300, 75, "About the Game", function () { menu.page = 3; }, color(130, 0, 180), color(180, 0, 255));
-    let aiOneButton = new Button(113, 415, 100, 50, "1", function() { gameMusic.playMode('restart'); gameMusic.loop(); players = [player]; start(1); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
-    let aiTwoButton = new Button(261, 415, 100, 50, "2", function() { gameMusic.playMode('restart'); gameMusic.loop(); players = [player]; start(2); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
-    let aiThreeButton = new Button(348, 415, 100, 50, "5", function() { gameMusic.playMode('restart'); gameMusic.loop(); players = [player]; start(5); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
-    let aiFourButton = new Button(490, 415, 100, 50, "10", function() { gameMusic.playMode('restart'); gameMusic.loop(); players = [player]; start(10); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
+    let tutorialButton = new Button(200, 525, 188, 75, "Tutorial", function () { menu.page = 2; }, color(130, 0, 180), color(180, 0, 255));
+    let aboutButton = new Button(490, 525, 300, 75, "About the Game", function () { menu.page = 3; }, color(130, 0, 180), color(180, 0, 255));
+    let aiOneButton = new Button(270, 375, 100, 50, "1", function() { selectedAI = 1; gameMusic.playMode('restart'); gameMusic.loop(); players = [player]; start(); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
+    let aiTwoButton = new Button(270, 475, 100, 50, "4", function() { selectedAI = 4; gameMusic.playMode('restart'); gameMusic.loop(); players = [player]; start(); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
+    let aiThreeButton = new Button(455, 375, 100, 50, "9", function() { selectedAI = 9; gameMusic.playMode('restart'); gameMusic.loop(); players = [player]; start(); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
+    let aiFourButton = new Button(455, 475, 100, 50, "19", function() { selectedAI = 19; gameMusic.playMode('restart'); gameMusic.loop(); players = [player]; start(); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
 
-    let aboutText = new Text(375, 203, 18, color(255, 255, 255), "Cosmic Adventure is a game developed by Evan and some other kid. \nThe game is loosely based on space adventure, survival game. \nYou can choose to play as one player, or together with a friend locally. \nHUD screens for quick view of each player\'s health, speed and remaining bullets. \nIn the lower left, statistics regarding the game itself are displayed and \nupdated in real time for both players to look at throughout the game. \n\nThe overall goal of the game is to pickup the various coins throughout the map \nand proceed to the unlocked end, whilst defending yourself and sneaking around eachother \n(whilst in split screen), and make it to the end first. Whoever makes it first is the winner. \n\nHowever in single player mode, the game takes a largely different approach in which \nthe player races against the set number of enemies, from four set options \nthat are provided to the player before it starts, allowing them to specify the amount of AI \nships that will attempt to seek the end through various checkpoints and path finding. \nFirst person (or AI) to reach the end after three laps is announced the winner.");
+    let aboutText = new Text(375, 203, 18, color(255, 255, 255), "Cosmic Adventure is a game developed by Evan and some other kid. \nThe game is loosely based on being space adventure / racing game. \nYou can choose to play as one player, or together with a friend locally. \nHUD screens for quick view of each player\'s health, speed and remaining bullets. \nIn the lower left, statistics regarding the game itself are displayed and \nupdated in real time for both players to look at throughout the game. \n\nThe overall goal of the two player game is to pickup the coins around the map \nand proceed to the unlocked end, whilst defending yourself and sneaking around eachother \nand make it to the end first. Whoever makes it first is the winner. \n\nHowever in single player mode, the game takes a largely different approach in which \nthe player races against the set number of enemies, from four set options \nthat are provided to the player before it starts, allowing them to specify the amount of AI \nships that will attempt to seek the end through various checkpoints and path finding. \nFirst person (or AI) to reach the end after three laps is announced the winner.");
 
-    let versionText = new Text(690, 735, 14, color(255, 255, 255), "Version: 1.5.2");
-    let aiText = new Text(375, 300, 24, color(255, 255, 255), "Select the amount of AI ships you want to race around the course.")
+    let versionText = new Text(690, 735, 14, color(255, 255, 255), "Version: 1.7.2");
+    let aiText = new Text(375, 290, 24, color(255, 255, 255), "Select the amount of AI ships you want to race around the course.")
 
-    let tutorialP1Text = new Text(250, 365, 20, color(255, 255, 255), "Controls: \nW, A, S, D to move around, \nQ and E to strafe left and right, \nSpace to rapidly boost, \nLeft Click to fire projectiles.");
-    let tutorialP2Text = new Text(515, 365, 20, color(255, 255, 255), "Controls: \nUp, Down, Left, Right Arrows to move around, \nQuote and Enter to strafe left and right, \nRight Shift to rapidly boost, \nForward Slash to fire projectiles.");
+    let tutorialP1Text = new Text(205, 365, 20, color(255, 255, 255), "Controls: \nW, A, S, D to move around, \nQ and E to strafe left and right, \nSpace to rapidly boost, \nLeft Click to fire projectiles.");
+    let tutorialP2Text = new Text(530, 365, 20, color(255, 255, 255), "Controls: \nUp, Down, Left, Right Arrows to move around, \nQuote and Enter to strafe left and right, \nRight Shift to rapidly boost, \nForward Slash to fire projectiles.");
 
-    let singlePlayer = new Button(375, 275, 250, 75, "Single Player", function () { menu.page = 4; }, color(130, 0, 180), color(180, 0, 255)); //{ players = [player]; start(); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
-    let splitButton = new Button(375, 425, 250, 75, "Split Screen", function () { gameMusic.playMode('restart'); gameMusic.loop(); players = [player, player2]; start(); }, color(130, 0, 180), color(180, 0, 255));
+    let singlePlayer = new Button(375, 285, 250, 75, "Single Player", function () { menu.page = 4; }, color(130, 0, 180), color(180, 0, 255)); //{ players = [player]; start(); setInterval(positionRanking, 500); }, color(130, 0, 180), color(180, 0, 255));
+    let splitButton = new Button(375, 435, 250, 75, "Split Screen", function () { gameMusic.playMode('restart'); gameMusic.loop(); players = [player, player2]; start(); }, color(130, 0, 180), color(180, 0, 255));
 
-    let tutorialP1Image = new ImageGraphic(p1Img, 195, 305, 125, 125);
-    let tutorialP2Image = new ImageGraphic(p2Img, 495, 315, 100, 100);
+    let tutorialP1Image = new ImageGraphic(p1Img, 195, 295, 125, 125);
+    let tutorialP2Image = new ImageGraphic(p2Img, 510, 315, 100, 100);
 
     let backButton = new Button(375, 595, 325, 50, "Back to Main Menu", function () { menu.page = 0; }, color(130, 0, 180), color(180, 0, 255));
-    let playAgainButton = new Button(375, 595, 325, 50, "Play Again", function ()
+    let playAgainButton = new Button(375, 465, 325, 50, "Play Again", function ()
     {
       playing = false;
       paused = false;
@@ -139,16 +133,21 @@ function setup()
       player2.vx = 0;
       player2.vy = 0;
       player2.direction = 90;
+      volumeSlider.hide();
     }, color(130, 0, 180), color(180, 0, 255));
-    let unpauseButton = new Button(375, 350, 300, 50, "Return to Game", function () { gameMusic.play(); paused = false; playing = true; }, color(130, 0, 180), color(180, 0, 255));
+    let unpauseButton = new Button(375, 350, 300, 50, "Return to Game", function () { volumeSlider.hide(); gameMusic.play(); paused = false; playing = true; }, color(130, 0, 180), color(180, 0, 255));
+    volumeSlider = createSlider(0, 1, 0.5, 0.1);
+    volumeSlider.position(300, 715);
+    volumeSlider.style('width', '300px');
+    volumeSlider.hide();
 
     menu = new Menu("Cosmic Adventure", [[startButton, tutorialButton, aboutButton, versionText], [singlePlayer, splitButton, backButton], [backButton, tutorialP1Image, tutorialP2Image, tutorialP1Text, tutorialP2Text], [backButton, aboutText], [backButton, aiText, aiOneButton, aiTwoButton, aiThreeButton, aiFourButton]], true); //, aiText, aiOption1, aiOption2, aiOption3, aiOption4]]);
-    pausedMenu = new Menu("Paused", [[unpauseButton, exitButton], backButton], true);
+    pausedMenu = new Menu("Paused", [[unpauseButton, exitButton, volumeSlider], backButton], true);
     playerOneWin = new Menu("Player One Wins", [[playAgainButton, exitButton], backButton], true);
     playerTwoWin = new Menu("Player Two Wins", [[playAgainButton, exitButton], backButton], true);
 }
 
-function start(aiAmount)
+function start()
 {
     background(0)
     playing = true;
@@ -166,14 +165,14 @@ function start(aiAmount)
     {
         screens.push(new Screen((width / 2 + i % 2 * width) / cols, (height / 2 + floor(i / 2) * height) / rows, width / cols, height / rows, players[i]));
     }
-    if (players.length > 1 && players.length < 4)
+    if (players[1] == player2)
     {
         screens.push(new GameMap(width * 0.5, height * 0.75, width / 2, height / 2, { x: -1250, y: -1500 }, 3000, 2000));
     }
-    if(players.length < 2)
+    if(players[1] != player2)
     {
-      for (var i = 0; i < aiAmount; i++) {
-          new AIShip(0, i * 25 - 100, 40, 20, aiImg);
+      for (var i = 0; i < selectedAI; i++) {
+          players.push(new AIShip(0, i * 25 - 100, 40, 20, aiImg));
       }
     }
 }
@@ -187,8 +186,9 @@ function draw()
     return;
   }
 
-  if (register[27])
+  if(register[27] && !paused)
   {
+    volumeSlider.show();
     gameMusic.pause();
     register[27] = false;
     paused = true;
@@ -208,12 +208,15 @@ function draw()
 
   if(paused)
   {
+
     pausedMenu.draw();
 
     if(register[27])
     {
       paused = false;
       register[27] = false;
+      volumeSlider.hide();
+      gameMusic.play();
     }
     return;
   }

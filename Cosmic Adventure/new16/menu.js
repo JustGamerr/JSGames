@@ -20,9 +20,20 @@ class Menu
     textSize(64);
     text(this.text, 375, 150);
 
+    if(this.text == "Paused")
+    {
+      let sliderVal = volumeSlider.value();
+      gameMusic.setVolume(sliderVal);
+    }
+
     for(var button of this.pages[this.page])
     {
-      if(button.text == "Exit to Main Menu" || button.text == "Return to Game")
+      if(button == volumeSlider)
+      {
+        continue;
+      }
+
+      if(button.text == "Exit to Main Menu" || button.text == "Return to Game" || button.text == "Play Again")
       {
         button.draw();
         if(register[LEFT] && button.mouseCollide())
@@ -33,7 +44,7 @@ class Menu
         }
       }
 
-      if(button.text == "1" || button.text == "2" || button.text == "5" || button.text == "10")
+      if(button.text == "1" || button.text == "4" || button.text == "9" || button.text == "19")
       {
         button.draw();
         if(register[LEFT] && button.mouseCollide())
@@ -44,7 +55,7 @@ class Menu
         }
       }
 
-      if(button.text == "Version: 1.5.2")
+      if(button.text == "Version: 1.7.2")
       {
         button.draw();
         continue;
@@ -121,6 +132,7 @@ class Button
     textAlign(CENTER);
 
     text(this.text, this.x, this.y + this.height / 6);
+
   }
 }
 
