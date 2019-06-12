@@ -9,6 +9,7 @@ class Menu
     this.color = backgroundColor || color(0, 0, 0);
     this.textColor = textColor || color(0, 191, 255);
     this.objectsNum = 0;
+    this.sliderVal = 0.5;
   }
   draw()
   {
@@ -22,7 +23,7 @@ class Menu
 
     if(this.text == "Paused")
     {
-      let sliderVal = volumeSlider.value();
+      this.sliderVal = volumeSlider.value();
       gameMusic.setVolume(sliderVal);
     }
 
@@ -55,7 +56,7 @@ class Menu
         }
       }
 
-      if(button.text == "Version: 1.7.2")
+      if(button.text == "Version: 1.8.2")
       {
         button.draw();
         continue;

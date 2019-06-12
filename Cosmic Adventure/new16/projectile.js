@@ -12,7 +12,7 @@ class Projectile
     this.id = id;
     if(this.id == 1)
     {
-      this.targets = [obstacles, [player]];
+      this.targets = [obstacles, [player], players.filter((p) => { return (p != player || p != player2) });];
     } else {
       this.targets = [obstacles, [player2]];
     }
@@ -44,8 +44,9 @@ class Projectile
             if(player2.health > 10)
             {
               player2.health -= 10;
+              player2.thrust -= 0.03;
             } else {
-              gameMusic.pause();
+              gameMusic.stop();
               p1Win = true;
             }
           }
@@ -54,8 +55,9 @@ class Projectile
             if(player.health > 10)
             {
               player.health -= 10;
+              player.thrust -= 0.03;
             } else {
-              gameMusic.pause();
+              gameMusic.stop();
               p2Win = true;
             }
           }
